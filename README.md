@@ -1,3 +1,3 @@
 # Harjoitustyö
 
-Sisältää **viikon 1** *harjoitustehtävät*.
+Sisältää **viikon 1** *harjoitustehtävät*
