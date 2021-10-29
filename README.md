@@ -2,9 +2,9 @@
 
 Sisältää **viikon 1** *harjoitustehtävät*
 
-##Tehtävät
+## Tehtävät
 
-###Viikko 1
+### Viikko 1
 
-[gitlog.txt]()
-[komentorivi.txt(https://github.com/antonlep/ot-harjoitustyo/blob/master/laskarit/gitlog.txt)
+* [gitlog.txt]()
+* [komentorivi.txt(https://github.com/antonlep/ot-harjoitustyo/blob/master/laskarit/gitlog.txt)
