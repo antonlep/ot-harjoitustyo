@@ -10,6 +10,6 @@
 * [komentorivi.txt](https://github.com/antonlep/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
 ## Documentation
-[Requirements specification](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaation/requirements_specification.md)
+[Requirements specification](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/requirements_specification.md)
 
-[Working time record](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaation/work_hours.md)
+[Work hour record](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/work_hours.md)
