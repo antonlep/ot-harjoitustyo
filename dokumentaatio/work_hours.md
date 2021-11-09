@@ -2,4 +2,4 @@
 
 | day   | time | description  |
 | :----:|:-----| :-----|
-| 9.11. | 2    | documenting initial requirement specification |
+| 9.11. |   2  | initial requirement specification |
