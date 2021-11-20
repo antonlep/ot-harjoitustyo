@@ -1,26 +1,24 @@
 import pygame
-from objects.paddle import Paddle
+from entities.paddle import Paddle
+from game_loop import GameLoop
+from renderer import Renderer
+from event_queue import EventQueue
 
 def main():
     height = 600
     width = 800
     paddle_height = 20
     paddle_width = 100
-    screen = pygame.display.set_mode([width, height])
+    display = pygame.display.set_mode([width, height])
+    pygame.display.set_caption("Breakout")
     paddle = Paddle(paddle_width, paddle_height,
                     width/2-paddle_width/2, height-paddle_height)
     clock = pygame.time.Clock()
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-        pressed_keys = pygame.key.get_pressed()
-        paddle.update(pressed_keys)
-        screen.fill((0, 0, 0))
-        screen.blit(paddle.surf, paddle.rect)
-        pygame.display.flip()
-        clock.tick(60)
+    renderer = Renderer(paddle, display)
+    event_queue = EventQueue()
+    game_loop = GameLoop(paddle, renderer, event_queue, clock)
+    pygame.init()
+    game_loop.start()
 
 if __name__=="__main__":
     main()
