@@ -1,5 +1,8 @@
 import pygame
 
+class InterruptExecution(Exception):
+    pass
+
 class GameLoop:
     def __init__(self, paddle, renderer, event_queue, clock):
         self.paddle = paddle
@@ -10,10 +13,10 @@ class GameLoop:
     def start(self):
         running = True
         while running:
-            for event in self.event_queue.get_events():
-                if event.type == pygame.QUIT:
+            events = self.event_queue.get_events()
+            for event in events:
+                if event == "QUIT":
                     running = False
-            pressed_keys = self.event_queue.get_pressed_key()
-            self.paddle.update(pressed_keys)
+            self.paddle.update(events)
             self.renderer.render()
             self.clock.tick(60)
