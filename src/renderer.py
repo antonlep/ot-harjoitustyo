@@ -1,4 +1,3 @@
-from entities.paddle import Paddle
 import pygame
 
 class Renderer:

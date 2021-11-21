@@ -24,7 +24,7 @@ class Paddle(pygame.sprite.Sprite):
             if event == "RIGHT_UP":
                 self.right = False
         if self.left:
-            self.move_left()        
+            self.move_left()
         if self.right:
             self.move_right()
 
@@ -35,5 +35,3 @@ class Paddle(pygame.sprite.Sprite):
     def move_right(self):
         if self.rect.right < self.display_width:
             self.rect.move_ip(self.speed, 0)
-
-    

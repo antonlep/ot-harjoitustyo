@@ -1,8 +1,3 @@
-import pygame
-
-class InterruptExecution(Exception):
-    pass
-
 class GameLoop:
     def __init__(self, paddle, renderer, event_queue, clock):
         self.paddle = paddle
