@@ -1,13 +1,12 @@
 import pygame
 
 class Renderer:
-    def __init__(self, paddle, ball, display):
-        self.paddle = paddle
-        self.ball = ball
+    def __init__(self, entities, display):
+        self.entities = entities
         self.display = display
 
     def render(self):
         self.display.fill((0, 0, 0))
-        self.display.blit(self.paddle.surf, self.paddle.rect)
-        self.display.blit(self.ball.surf, self.ball.rect)
+        for entity in self.entities.all_entities:
+            self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()

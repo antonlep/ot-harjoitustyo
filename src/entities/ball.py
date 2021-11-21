@@ -26,4 +26,3 @@ class Ball(pygame.sprite.Sprite):
         if self.rect.bottom > self.display_height:
             self.down = -1
         self.rect.move_ip(self.right*self.speed, self.down*self.speed)
-            
