@@ -1,6 +1,6 @@
 # pygame-breakout
 
-Breakout clone implemented with pygame library. In the current stage the game has only the moving paddle, in next version the ball and breakable tiles are going to be included.
+Breakout clone implemented with pygame library. In the current stage the game has only the moving paddle. In the next version the ball and breakable tiles are going to be included.
 
 ## Documentation
 [Requirements specification](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/requirements_specification.md)
