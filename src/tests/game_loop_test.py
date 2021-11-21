@@ -7,6 +7,10 @@ class StubRenderer:
     def render(self):
         pass
 
+class StubBall:
+    def update(self):
+        pass
+
 class StubClock:
     def tick(self, framerate):
         pass
@@ -32,7 +36,7 @@ class TestGameLoop(unittest.TestCase):
     def test_paddle_moves_left(self):
         events = ["LEFT_DOWN", "QUIT"]
         print(self.paddle.rect.x)
-        game_loop = GameLoop(self.paddle, StubRenderer(), StubEventQueue(events), StubClock())
+        game_loop = GameLoop(self.paddle, StubBall(), StubRenderer(), StubEventQueue(events), StubClock())
         game_loop.start()
         self.assertEqual(self.paddle.rect.x, self.x_init - self.speed)
         print(self.paddle.rect.x)
