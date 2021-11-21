@@ -1,6 +1,7 @@
 class GameLoop:
-    def __init__(self, paddle, renderer, event_queue, clock):
+    def __init__(self, paddle, ball, renderer, event_queue, clock):
         self.paddle = paddle
+        self.ball = ball
         self.renderer = renderer
         self.event_queue = event_queue
         self.clock = clock
@@ -13,5 +14,6 @@ class GameLoop:
                 if event == "QUIT":
                     running = False
             self.paddle.update(events)
+            self.ball.update()
             self.renderer.render()
             self.clock.tick(60)
