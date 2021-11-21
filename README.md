@@ -13,13 +13,10 @@
 ## Installation
 
 -Install dependencies:
-'''bash
-poetry install
-'''
+`poetry install`
+
 -Start the game:
-'''bash
-poetry run invoke start
-'''
+'poetry run invoke start`
 
 ## List of commands
 
