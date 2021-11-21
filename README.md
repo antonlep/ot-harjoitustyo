@@ -12,13 +12,9 @@
 
 ## Installation
 
-- Install dependencies:
+- Install dependencies `poetry install`
 
-`poetry install`
-
-- Start the game:
-
-`poetry run invoke start`
+- Start the game `poetry run invoke start`
 
 ## List of commands
 
