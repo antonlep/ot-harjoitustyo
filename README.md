@@ -1,4 +1,4 @@
-# pygame-breakout
+# Breakout
 
 Breakout game created with Python 3 with pygame library. In the current stage the game has only the moving paddle. In the next version the ball and breakable tiles are going to be included.
 
