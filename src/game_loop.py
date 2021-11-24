@@ -12,7 +12,6 @@ class GameLoop:
             for event in events:
                 if event == "QUIT":
                     running = False
-            self.game_level.paddle.update(events)
-            self.game_level.ball.update()
+            self.game_level.update(events)
             self.renderer.render()
             self.clock.tick(60)

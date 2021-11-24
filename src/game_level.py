@@ -8,3 +8,7 @@ class GameLevel:
         self.paddle_sprite = pygame.sprite.Group(self.paddle)
         self.ball_sprite = pygame.sprite.Group(self.ball)
         self.all_entities = pygame.sprite.Group(self.ball_sprite, self.paddle_sprite)
+
+    def update(self, events):
+        self.ball.update()
+        self.paddle.update(events)
