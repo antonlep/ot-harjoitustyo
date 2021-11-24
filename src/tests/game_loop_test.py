@@ -1,7 +1,8 @@
 import unittest
 import pygame
-from all_entities import AllEntities
 from entities.paddle import Paddle
+from entities.game_area import GameArea
+from game_level import GameLevel
 from game_loop import GameLoop
 
 class StubRenderer:
@@ -25,23 +26,14 @@ class StubEventQueue:
 
 class TestGameLoop(unittest.TestCase):
     def setUp(self):
-        self.width = 800
-        height = 600
-        paddle_height = 20
-        paddle_width = 100
-        self.x_init = self.width/2-paddle_width/2
+        paddle_size = (20, 100)
         self.speed = 10
-        self.paddle = Paddle(self.speed, paddle_width, paddle_height,
-                        self.x_init, height-paddle_height, self.width)
-        self.entities = AllEntities(self.paddle, StubBall())
+        game_area = GameArea(600, 800)
+        self.paddle = Paddle(self.speed, paddle_size, game_area)
+        self.game_level = GameLevel(game_area, self.paddle, StubBall())
 
     def test_paddle_moves_left(self):
         events = ["LEFT_DOWN", "QUIT"]
-        print(self.paddle.rect.x)
-        game_loop = GameLoop(self.entities, StubRenderer(), StubEventQueue(events), StubClock())
+        game_loop = GameLoop(self.game_level, StubRenderer(), StubEventQueue(events), StubClock())
         game_loop.start()
-        self.assertEqual(self.paddle.rect.x, self.x_init - self.speed)
-        print(self.paddle.rect.x)
-
-
-
+        self.assertEqual(self.paddle.rect.x, 340)

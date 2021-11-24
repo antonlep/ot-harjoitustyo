@@ -1,14 +1,14 @@
 import pygame
 
 class Paddle(pygame.sprite.Sprite):
-    def __init__(self, speed, width, height, x_init, y_init, display_width):
+    def __init__(self, speed, size, game_area):
         super().__init__()
-        self.surf = pygame.Surface((width, height))
+        self.surf = pygame.Surface((size[1], size[0]))
         self.surf.fill((200, 200, 200))
         self.rect = self.surf.get_rect()
-        self.rect.x = x_init
-        self.rect.y = y_init
-        self.display_width = display_width
+        self.rect.x = game_area.width/2 - size[1]/2
+        self.rect.y = game_area.height - size[0]
+        self.width = game_area.width
         self.speed = speed
         self.left = False
         self.right = False
@@ -23,6 +23,9 @@ class Paddle(pygame.sprite.Sprite):
                 self.left = False
             if event == "RIGHT_UP":
                 self.right = False
+        self.move()
+
+    def move(self):
         if self.left:
             self.move_left()
         if self.right:
@@ -33,5 +36,5 @@ class Paddle(pygame.sprite.Sprite):
             self.rect.move_ip(-self.speed, 0)
 
     def move_right(self):
-        if self.rect.right < self.display_width:
+        if self.rect.right < self.width:
             self.rect.move_ip(self.speed, 0)
