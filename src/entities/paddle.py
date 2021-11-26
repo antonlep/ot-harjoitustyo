@@ -12,6 +12,8 @@ class Paddle(pygame.sprite.Sprite):
         self.speed = speed
         self.left = False
         self.right = False
+        self.game_area = game_area
+        self.size = size
 
     def update(self, events):
         for event in events:
@@ -38,3 +40,8 @@ class Paddle(pygame.sprite.Sprite):
     def move_right(self):
         if self.rect.right < self.width:
             self.rect.move_ip(self.speed, 0)
+
+    def reset(self):
+        self.rect.x = self.game_area.width/2 - self.size[1]/2
+        self.left = False
+        self.right = False

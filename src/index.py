@@ -12,6 +12,7 @@ WIDTH = 800
 PADDLE_SIZE = (20, 100)
 PADDLE_SPEED = 10
 BALL_SPEED = 5
+LIVES = 2
 
 def main():
     display = pygame.display.set_mode([WIDTH, HEIGHT])
@@ -23,7 +24,7 @@ def main():
     clock = pygame.time.Clock()
     renderer = Renderer(game_level, display)
     event_queue = EventQueue()
-    game_loop = GameLoop(game_level, renderer, event_queue, clock)
+    game_loop = GameLoop(game_level, LIVES, renderer, event_queue, clock)
     pygame.init()
     game_loop.start()
 
