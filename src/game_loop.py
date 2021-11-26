@@ -5,9 +5,10 @@ class GameLoop:
         self.event_queue = event_queue
         self.clock = clock
         self.lives = lives
+        self.running = True
 
     def start(self):
-        while True:
+        while self.running:
             events = self.event_queue.get_events()
             self.check_lives()
             self.check_events(events)
@@ -25,7 +26,7 @@ class GameLoop:
     def check_events(self, events):
         for event in events:
             if event == "QUIT":
-                exit()
+                self.running = False
 
     def update_game_level(self, events):
         self.game_level.update(events)
@@ -34,4 +35,6 @@ class GameLoop:
     def game_over(self):
         while True:
             events = self.event_queue.get_events()
-            self.check_events(events)
+            for event in events:
+                if event == "QUIT":
+                    quit()

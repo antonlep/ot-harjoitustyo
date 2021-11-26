@@ -10,6 +10,13 @@ class StubRenderer:
         pass
 
 class StubBall(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.surf = pygame.Surface((0,0))
+        self.rect = self.surf.get_rect()
+        self.game_area_size = (0,0)
+        self.out = False
+
     def update(self):
         pass
 
@@ -33,7 +40,8 @@ class TestGameLoop(unittest.TestCase):
         self.game_level = GameLevel(game_area, self.paddle, StubBall())
 
     def test_paddle_moves_left(self):
+        lives = 2
         events = ["LEFT_DOWN", "QUIT"]
-        game_loop = GameLoop(self.game_level, StubRenderer(), StubEventQueue(events), StubClock())
+        game_loop = GameLoop(self.game_level, lives, StubRenderer(), StubEventQueue(events), StubClock())
         game_loop.start()
         self.assertEqual(self.paddle.rect.x, 340)
