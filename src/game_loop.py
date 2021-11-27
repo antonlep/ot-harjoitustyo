@@ -7,6 +7,7 @@ class GameLoop:
         self.event_queue = event_queue
         self.clock = clock
         self.lives = lives
+        self.points = 0
         self.running = True
 
     def start(self, game_level):
@@ -15,7 +16,7 @@ class GameLoop:
             self.check_lives(game_level)
             self.check_events(events)
             self.update_game_level(game_level, events)
-            self.renderer.render(game_level, self.lives)
+            self.renderer.render(game_level, self.lives, self.points)
             self.clock.tick(60)
 
     def check_lives(self, game_level):
@@ -32,7 +33,9 @@ class GameLoop:
 
     def update_game_level(self, game_level, events):
         game_level.update(events)
-        game_level.check_collisions()
+        game_level.check_paddle_collision()
+        if game_level.tile_collision():
+            self.points += 1
 
     def game_over(self):
         while True:

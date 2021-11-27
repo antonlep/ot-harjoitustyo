@@ -5,12 +5,10 @@ class Renderer:
         self.display = display
         self.font = pygame.font.Font('freesansbold.ttf', 20)
 
-    def render(self, game_level, lives):
+    def render(self, game_level, lives, points):
         self.display.fill((0, 0, 0))
-        text = self.font.render("Lives " + str(lives), True, (255,255,255))
-        text_rect = text.get_rect()
-        text_rect.center = (50,20)
-        self.display.blit(text, text_rect)
+        self.display_lives(lives)
+        self.display_points(points)
         for entity in game_level.all_entities:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
@@ -27,3 +25,15 @@ class Renderer:
         text_rect.center = (400,200)
         self.display.blit(text, text_rect)
         pygame.display.flip()
+
+    def display_lives(self, lives):
+        text = self.font.render("Lives " + str(lives), True, (255,255,255))
+        text_rect = text.get_rect()
+        text_rect.center = (50,20)
+        self.display.blit(text, text_rect)
+
+    def display_points(self, points):
+        text = self.font.render("Points " + str(points), True, (255,255,255))
+        text_rect = text.get_rect()
+        text_rect.center = (self.display.get_width()-100, 20)
+        self.display.blit(text, text_rect)

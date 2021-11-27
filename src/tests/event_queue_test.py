@@ -40,4 +40,3 @@ class TestEventQueue(unittest.TestCase):
         pygame.event.post(event)
         result = self.event_queue.get_events()
         self.assertEqual(result[0], "RIGHT_UP")
-
