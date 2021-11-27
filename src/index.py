@@ -20,13 +20,13 @@ def main():
     game_area = GameArea(HEIGHT, WIDTH)
     paddle = Paddle(PADDLE_SPEED, PADDLE_SIZE, game_area)
     ball = Ball(BALL_SPEED, game_area)
-    game_level = GameLevel(game_area, paddle, ball)
+    game_level_1 = GameLevel(game_area, paddle, ball)
     clock = pygame.time.Clock()
     pygame.init()
     renderer = Renderer(display)
     event_queue = EventQueue()
-    game_loop = GameLoop(game_level, LIVES, renderer, event_queue, clock)
-    game_loop.start()
+    game_loop = GameLoop(LIVES, renderer, event_queue, clock)
+    game_loop.start(game_level_1)
 
 if __name__=="__main__":
     main()
