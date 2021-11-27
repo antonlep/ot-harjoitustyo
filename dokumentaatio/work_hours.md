@@ -8,5 +8,5 @@
 | 21.11.|   1  | add ball |
 | 24.11.|   2  | create GameLevel class and remove unnecessary variables |
 | 26.11.|   3  | add ball collision detection and number of lives |
-| 27.11.|   1  | add unit tests for ball |
-| total |  16  | 
+| 27.11.|   3  | add unit tests for ball and event queue, add game over, refactor class dependencies |
+| total |  19  | 
