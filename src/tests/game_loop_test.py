@@ -42,10 +42,9 @@ class TestGameLoop(unittest.TestCase):
     def test_paddle_moves_left(self):
         lives = 2
         events = ["LEFT_DOWN", "QUIT"]
-        game_loop = GameLoop(self.game_level,
-                            lives,
+        game_loop = GameLoop(lives,
                             StubRenderer(),
                             StubEventQueue(events),
                             StubClock())
-        game_loop.start()
+        game_loop.start(self.game_level)
         self.assertEqual(self.paddle.rect.x, 340)
