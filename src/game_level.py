@@ -20,9 +20,7 @@ class GameLevel:
     def ball_out(self):
         if self.ball.out:
             return True
-        else:
-            return False
+        return False
 
     def reset(self):
         self.ball.reset()
-

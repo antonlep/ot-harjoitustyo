@@ -13,7 +13,6 @@ class Ball(pygame.sprite.Sprite):
         self.right = 1
         self.down = 1
         self.out = False
-        
 
     def update(self):
         if self.rect.left < 0:

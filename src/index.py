@@ -12,7 +12,7 @@ WIDTH = 800
 PADDLE_SIZE = (20, 100)
 PADDLE_SPEED = 10
 BALL_SPEED = 5
-LIVES = 2
+LIVES = 3
 
 def main():
     display = pygame.display.set_mode([WIDTH, HEIGHT])

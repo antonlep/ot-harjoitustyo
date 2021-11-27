@@ -1,3 +1,6 @@
+import sys
+
+
 class GameLoop:
     def __init__(self, game_level, lives, renderer, event_queue, clock):
         self.game_level = game_level
@@ -38,4 +41,4 @@ class GameLoop:
             events = self.event_queue.get_events()
             for event in events:
                 if event == "QUIT":
-                    quit()
+                    sys.exit()
