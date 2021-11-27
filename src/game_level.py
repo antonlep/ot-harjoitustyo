@@ -25,5 +25,4 @@ class GameLevel:
 
     def reset(self):
         self.ball.reset()
-        self.paddle.reset()
 

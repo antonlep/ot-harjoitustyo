@@ -13,7 +13,7 @@ class GameLoop:
             self.check_lives()
             self.check_events(events)
             self.update_game_level(events)
-            self.renderer.render()
+            self.renderer.render(self.lives)
             self.clock.tick(60)
 
     def check_lives(self):
@@ -34,6 +34,7 @@ class GameLoop:
 
     def game_over(self):
         while True:
+            self.renderer.render(self.lives)
             events = self.event_queue.get_events()
             for event in events:
                 if event == "QUIT":
