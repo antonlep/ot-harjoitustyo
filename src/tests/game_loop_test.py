@@ -6,7 +6,7 @@ from game_level import GameLevel
 from game_loop import GameLoop
 
 class StubRenderer:
-    def render(self, lives):
+    def render(self, game_level, lives):
         pass
 
 class StubBall(pygame.sprite.Sprite):

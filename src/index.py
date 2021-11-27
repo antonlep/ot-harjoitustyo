@@ -23,7 +23,7 @@ def main():
     game_level = GameLevel(game_area, paddle, ball)
     clock = pygame.time.Clock()
     pygame.init()
-    renderer = Renderer(game_level, display)
+    renderer = Renderer(display)
     event_queue = EventQueue()
     game_loop = GameLoop(game_level, LIVES, renderer, event_queue, clock)
     game_loop.start()

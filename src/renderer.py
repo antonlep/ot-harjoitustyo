@@ -1,12 +1,11 @@
 import pygame
 
 class Renderer:
-    def __init__(self, game_level, display):
-        self.game_level = game_level
+    def __init__(self, display):
         self.display = display
         self.font = pygame.font.Font('freesansbold.ttf', 20)
 
-    def render(self, lives):
+    def render(self, game_level, lives):
         self.display.fill((0, 0, 0))
         if lives == 0:
             self.show_game_over_screen()
@@ -14,7 +13,7 @@ class Renderer:
         text_rect = text.get_rect()
         text_rect.center = (50,20)
         self.display.blit(text, text_rect)
-        for entity in self.game_level.all_entities:
+        for entity in game_level.all_entities:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
 
