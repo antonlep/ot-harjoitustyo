@@ -9,4 +9,5 @@
 | 24.11.|   2  | create GameLevel class and remove unnecessary variables |
 | 26.11.|   3  | add ball collision detection and number of lives |
 | 27.11.|   4  | add unit tests for ball and event queue. add tiles, points, game over and architecture pic |
-| total |  20  | 
+| 28.11.|   1  | update documentation |
+| total |  21  | 
