@@ -1,6 +1,6 @@
 # Breakout
 
-Breakout game created with Python 3 with pygame library. In the current stage the game has only the moving paddle and bouncing ball. In the next version it will be possible to hit the ball. Also breakable tiles are going to be included.
+Breakout game created with Python 3 with pygame library. In the current stage the game has paddle, ball and breakable tiles. 
 
 ## Documentation
 [Requirements specification](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/requirements_specification.md)
