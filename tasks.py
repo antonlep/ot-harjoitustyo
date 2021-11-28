@@ -18,5 +18,5 @@ def coverage_report(ctx):
 
 @task
 def lint(ctx):
-    ctx.run("pylint src")
+    ctx.run("pylint --extension-pkg-whitelist=pygame src")
 
