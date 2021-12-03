@@ -25,6 +25,7 @@ class Renderer:
         text_rect = text.get_rect()
         text_rect.center = (400,200)
         self.display.blit(text, text_rect)
+        self.display_instructions()
         pygame.display.flip()
 
     def display_lives(self, lives):

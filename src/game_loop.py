@@ -10,6 +10,7 @@ class GameLoop:
         self.lives = lives
         self.points = 0
         self.running = True
+        self.paused = True
 
     def start(self):
         while self.running:
@@ -22,13 +23,14 @@ class GameLoop:
 
     def restart(self):
         self.game_level.reset()
-        self.lives = 3
+        self.lives = 1
         self.points = 0
 
     def check_lives(self):
         if self.game_level.ball_out():
             self.lives -= 1
             self.game_level.reset()
+            self.paused = True
         if self.lives == 0:
             self.game_over()
 
@@ -38,12 +40,19 @@ class GameLoop:
                 self.running = False
             if event == "N":
                 self.restart()
+                self.paused = True
+            if event == "SPACE":
+                self.paused = False
+                self.game_level.start()
 
     def update_game_level(self, events):
         self.game_level.update(events)
-        self.game_level.check_paddle_collision()
-        if self.game_level.tile_collision():
-            self.points += 1
+        if self.paused:
+            pass
+        else:
+            self.game_level.check_paddle_collision()
+            if self.game_level.tile_collision():
+                self.points += 1
 
     def game_over(self):
         while True:
@@ -52,3 +61,9 @@ class GameLoop:
             for event in events:
                 if event == "QUIT":
                     sys.exit()
+                if event == "N":
+                    self.running = True
+                    self.paused = True
+                    self.restart()
+                    self.start()
+                    break

@@ -14,6 +14,8 @@ class EventQueue:
                     result.append("RIGHT_DOWN")
                 if event.key == pygame.K_n:
                     result.append("N")
+                if event.key == pygame.K_SPACE:
+                    result.append("SPACE")
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     result.append("LEFT_UP")
