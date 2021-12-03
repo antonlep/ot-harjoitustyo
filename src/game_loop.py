@@ -15,24 +15,26 @@ class GameLoop:
     def start(self):
         while self.running:
             events = self.event_queue.get_events()
-            self.check_lives()
             self.check_events(events)
             self.update_game_level(events)
+            self.check_lives()
             self.renderer.render(self.game_level, self.lives, self.points)
             self.clock.tick(60)
 
     def restart(self):
         self.game_level.reset_all()
-        self.lives = 1
+        self.lives = 3
         self.points = 0
 
     def check_lives(self):
-        if self.game_level.ball_out() and self.running:
+        if self.game_level.ball_out():
             self.lives -= 1
-            self.game_level.reset()
-            self.paused = True
-        if self.lives == 0:
-            self.game_over()
+            if self.lives == 0:
+                self.game_over()
+            else:
+                self.game_level.reset()
+                self.paused = True
+                
 
     def check_events(self, events):
         for event in events:

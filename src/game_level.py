@@ -35,6 +35,7 @@ class GameLevel:
 
     def reset_all(self):
         self.ball.reset()
+        self.paddle.reset()
         self.create_tiles()
         self.all_entities = pygame.sprite.Group(
             self.ball_group,
