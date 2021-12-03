@@ -9,6 +9,7 @@ class Renderer:
         self.display.fill((0, 0, 0))
         self.display_lives(lives)
         self.display_points(points)
+        self.display_instructions()
         for entity in game_level.all_entities:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
@@ -37,3 +38,10 @@ class Renderer:
         text_rect = text.get_rect()
         text_rect.center = (self.display.get_width()-100, 20)
         self.display.blit(text, text_rect)
+
+    def display_instructions(self):
+        text = self.font.render("Press N to start a new game", True, (255,255,255))
+        text_rect = text.get_rect()
+        text_rect.center = (self.display.get_width()-420, 20)
+        self.display.blit(text, text_rect)
+

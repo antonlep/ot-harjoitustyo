@@ -25,8 +25,8 @@ def main():
     pygame.init()
     renderer = Renderer(display)
     event_queue = EventQueue()
-    game_loop = GameLoop(LIVES, renderer, event_queue, clock)
-    game_loop.start(game_level_1)
+    game_loop = GameLoop(LIVES, game_level_1, renderer, event_queue, clock)
+    game_loop.start()
 
 if __name__=="__main__":
     main()

@@ -43,8 +43,9 @@ class TestGameLoop(unittest.TestCase):
         lives = 2
         events = ["LEFT_DOWN", "QUIT"]
         game_loop = GameLoop(lives,
+                            self.game_level,
                             StubRenderer(),
                             StubEventQueue(events),
                             StubClock())
-        game_loop.start(self.game_level)
+        game_loop.start()
         self.assertEqual(self.paddle.rect.x, 340)

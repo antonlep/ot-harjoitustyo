@@ -2,7 +2,8 @@ import sys
 
 
 class GameLoop:
-    def __init__(self, lives, renderer, event_queue, clock):
+    def __init__(self, lives, game_level, renderer, event_queue, clock):
+        self.game_level = game_level
         self.renderer = renderer
         self.event_queue = event_queue
         self.clock = clock
@@ -10,19 +11,24 @@ class GameLoop:
         self.points = 0
         self.running = True
 
-    def start(self, game_level):
+    def start(self):
         while self.running:
             events = self.event_queue.get_events()
-            self.check_lives(game_level)
+            self.check_lives()
             self.check_events(events)
-            self.update_game_level(game_level, events)
-            self.renderer.render(game_level, self.lives, self.points)
+            self.update_game_level(events)
+            self.renderer.render(self.game_level, self.lives, self.points)
             self.clock.tick(60)
 
-    def check_lives(self, game_level):
-        if game_level.ball_out():
+    def restart(self):
+        self.game_level.reset()
+        self.lives = 3
+        self.points = 0
+
+    def check_lives(self):
+        if self.game_level.ball_out():
             self.lives -= 1
-            game_level.reset()
+            self.game_level.reset()
         if self.lives == 0:
             self.game_over()
 
@@ -30,11 +36,13 @@ class GameLoop:
         for event in events:
             if event == "QUIT":
                 self.running = False
+            if event == "N":
+                self.restart()
 
-    def update_game_level(self, game_level, events):
-        game_level.update(events)
-        game_level.check_paddle_collision()
-        if game_level.tile_collision():
+    def update_game_level(self, events):
+        self.game_level.update(events)
+        self.game_level.check_paddle_collision()
+        if self.game_level.tile_collision():
             self.points += 1
 
     def game_over(self):
