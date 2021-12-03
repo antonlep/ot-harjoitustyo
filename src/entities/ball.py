@@ -7,12 +7,8 @@ class Ball(pygame.sprite.Sprite):
         self.surf.fill((200, 200, 200))
         self.rect = self.surf.get_rect()
         self.game_area_size = (game_area.height, game_area.width)
-        self.rect.x = self.game_area_size[1]/2
-        self.rect.y = self.game_area_size[0]-20
         self.speed = speed
-        self.right = 0
-        self.down = 0
-        self.out = False
+        self.reset()
 
     def update(self):
         if self.rect.left < 0:
@@ -30,7 +26,7 @@ class Ball(pygame.sprite.Sprite):
 
     def reset(self):
         self.rect.x = self.game_area_size[1]/2
-        self.rect.y = self.game_area_size[0]-20
+        self.rect.y = self.game_area_size[0]-40
         self.right = 0
         self.down = 0
         self.out = False

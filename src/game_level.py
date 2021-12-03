@@ -6,8 +6,6 @@ class GameLevel:
         self.game_area = game_area
         self.paddle = paddle
         self.ball = ball
-        self.paddle_group = pygame.sprite.Group(self.paddle)
-        self.ball_group = pygame.sprite.Group(self.ball)
         self.create_tiles()
         self.create_all_entities()
 
@@ -34,6 +32,9 @@ class GameLevel:
 
     def reset(self):
         self.ball.reset()
+
+    def reset_all(self):
+        self.ball.reset()
         self.create_tiles()
         self.all_entities = pygame.sprite.Group(
             self.ball_group,
@@ -43,15 +44,21 @@ class GameLevel:
     def create_tiles(self):
         self.tiles_group = pygame.sprite.Group()
         for i in range(105, self.game_area.width, 100):
-            for j in range(40, 80, 20):
+            for j in range(40, 100, 20):
                 tile = Tile(i, j)
                 self.tiles_group.add(tile)
 
     def create_all_entities(self):
+        self.paddle_group = pygame.sprite.Group(self.paddle)
+        self.ball_group = pygame.sprite.Group(self.ball)
         self.all_entities = pygame.sprite.Group(
         self.ball_group,
         self.paddle_group,
         self.tiles_group)
+
+    def ball_on_paddle(self):
+        self.ball.rect.x = self.paddle.rect.x + self.paddle.size[1]/2
+
 
     def start(self):
         self.ball.start()

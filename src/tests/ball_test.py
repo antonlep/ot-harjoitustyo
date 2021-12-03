@@ -68,4 +68,4 @@ class BallTest(unittest.TestCase):
     def test_ball_resets_to_correct_position(self):
         self.ball.reset()
         self.assertEqual(self.ball.rect.x, self.width/2)
-        self.assertEqual(self.ball.rect.y, self.height/2)
+        self.assertEqual(self.ball.rect.y, 560)
