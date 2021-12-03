@@ -17,7 +17,7 @@ A game, where the goal is to knock down rows of bricks with a ball, using a mova
 - [x] User can hit the ball with paddle
 - [x] User can break tiles with ball
 - [x] User gets points by breaking tiles
-- [ ] User can start a new game
+- [x] User can start a new game
 - [x] When user misses the ball three times, game is over
 - [ ] After user has cleared all the bricks from the game area, the next level starts with higher difficulty
 - [ ] User can change the game difficulty level which controls the ball speed
