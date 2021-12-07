@@ -10,4 +10,6 @@
 | 26.11.|   3  | add ball collision detection and number of lives |
 | 27.11.|   4  | add unit tests for ball and event queue. add tiles, points, game over and architecture pic |
 | 28.11.|   1  | update documentation |
-| total |  21  | 
+|  3.11.|   5  | add possibility to start a new game, fix live counting and game over screen |
+|  7.12.|   2  | make a release, update documentation, minor code fixes|
+| total |  27  | 
