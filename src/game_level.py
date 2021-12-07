@@ -53,6 +53,5 @@ class GameLevel:
     def ball_on_paddle(self):
         self.ball.rect.x = self.paddle.rect.x + self.paddle.size[1]/2
 
-
     def start(self):
         self.ball.start()

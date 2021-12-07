@@ -57,7 +57,7 @@ class GameLoop:
 
     def game_over(self):
         while True:
-            self.renderer.game_over_screen()
+            self.renderer.game_over_screen(self.points)
             events = self.event_queue.get_events()
             for event in events:
                 if event == "QUIT":

@@ -14,36 +14,36 @@ class Renderer:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
 
-    def game_over_screen(self):
+    def game_over_screen(self, points):
         self.display.fill((0, 0, 0))
-        text = self.font.render("Lives 0", True, (255,255,255))
-        text_rect = text.get_rect()
-        text_rect.center = (50,20)
-        self.display.blit(text, text_rect)
-        font = pygame.font.Font('freesansbold.ttf', 40)
-        text = font.render("Game Over", True, (255,255,255))
-        text_rect = text.get_rect()
-        text_rect.center = (400,200)
-        self.display.blit(text, text_rect)
+        self.display_lives(0)
         self.display_instructions()
+        self.display_points(points)
+        font = pygame.font.Font('freesansbold.ttf', 40)
+        self.print_text("Game Over", (400, 200), font)
         pygame.display.flip()
 
     def display_lives(self, lives):
-        text = self.font.render("Lives " + str(lives), True, (255,255,255))
-        text_rect = text.get_rect()
-        text_rect.center = (50,20)
-        self.display.blit(text, text_rect)
+        text = "Lives " + str(lives)
+        position = (50,20)
+        self.print_text(text, position)
 
     def display_points(self, points):
-        text = self.font.render("Points " + str(points), True, (255,255,255))
-        text_rect = text.get_rect()
-        text_rect.center = (self.display.get_width()-100, 20)
-        self.display.blit(text, text_rect)
+        text = "Points " + str(points)
+        position = (self.display.get_width()-100, 20)
+        self.print_text(text, position)
 
     def display_instructions(self):
-        text = self.font.render("N to start a new game, Space to launch a ball",
-                                True,
-                                (255,255,255))
+        text = "N to start a new game, Space to launch a ball"
+        position = (self.display.get_width()-420, 20)
+        self.print_text(text, position)
+
+    def print_text(self, text, position, init_font=None):
+        if not init_font:
+            font = self.font
+        else:
+            font = init_font
+        text = font.render(text, True, (255,255,255))
         text_rect = text.get_rect()
-        text_rect.center = (self.display.get_width()-420, 20)
+        text_rect.center = (position[0], position[1])
         self.display.blit(text, text_rect)
