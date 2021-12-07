@@ -10,6 +10,13 @@ class Ball(pygame.sprite.Sprite):
         self.speed = speed
         self.reset()
 
+    def reset(self):
+        self.rect.x = self.game_area_size[1]/2
+        self.rect.y = self.game_area_size[0]-40
+        self.right = 0
+        self.down = 0
+        self.out = False
+
     def update(self):
         if self.rect.left < 0:
             self.right = 1
@@ -23,13 +30,6 @@ class Ball(pygame.sprite.Sprite):
 
     def paddle_collide(self):
         self.down = -1
-
-    def reset(self):
-        self.rect.x = self.game_area_size[1]/2
-        self.rect.y = self.game_area_size[0]-40
-        self.right = 0
-        self.down = 0
-        self.out = False
 
     def start(self):
         self.right = 1

@@ -34,7 +34,6 @@ class GameLoop:
             else:
                 self.game_level.reset()
                 self.paused = True
-                
 
     def check_events(self, events):
         for event in events:

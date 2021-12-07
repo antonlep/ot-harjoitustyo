@@ -41,8 +41,9 @@ class Renderer:
         self.display.blit(text, text_rect)
 
     def display_instructions(self):
-        text = self.font.render("Press N to start a new game", True, (255,255,255))
+        text = self.font.render("N to start a new game, Space to launch a ball",
+                                True,
+                                (255,255,255))
         text_rect = text.get_rect()
         text_rect.center = (self.display.get_width()-420, 20)
         self.display.blit(text, text_rect)
-
