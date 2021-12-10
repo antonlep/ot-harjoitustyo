@@ -46,7 +46,9 @@ class GameLevel:
     def create_tiles(self):
         self.tiles_group = pygame.sprite.Group()
         for i in range(105, self.game_area.width, 100):
-            for j in range(40, 100, 20):
+        # for i in range(505, self.game_area.width, 100):
+            for j in range(40, 80, 20):
+            # for j in range(40, 60, 20):
                 tile = Tile(i, j)
                 self.tiles_group.add(tile)
 
@@ -55,3 +57,6 @@ class GameLevel:
 
     def start(self):
         self.ball.start()
+
+    def no_tiles(self):
+        return not self.tiles_group

@@ -8,7 +8,7 @@ from game_level import GameLevel
 from game_loop import GameLoop
 
 class StubRenderer:
-    def render(self, game_level, lives, points):
+    def render(self, game_level, lives, points, level):
         pass
 
     def game_over_screen(self):
