@@ -12,19 +12,19 @@ class PaddleTest(unittest.TestCase):
         self.paddle = Paddle(self.paddle_speed, paddle_size, game_area)
 
     def test_paddle_moves_left(self):
-        self.paddle.move_left()
+        self.paddle._move_left()
         self.assertEqual(self.paddle.rect.x, 340)
 
     def test_paddle_dont_move_through_left_wall(self):
         for _ in range(40):
-            self.paddle.move_left()
+            self.paddle._move_left()
         self.assertEqual(self.paddle.rect.left, 0)
 
     def test_paddle_moves_right(self):
-        self.paddle.move_right()
+        self.paddle._move_right()
         self.assertEqual(self.paddle.rect.x, 360)
 
     def test_paddle_dont_move_through_right_wall(self):
         for _ in range(40):
-            self.paddle.move_right()
+            self.paddle._move_right()
         self.assertEqual(self.paddle.rect.right, 800)

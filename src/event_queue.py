@@ -1,7 +1,15 @@
 import pygame
 
 class EventQueue:
+    """Class that handles user generated events.
+    """
     def get_events(self):
+        """Gets keypress events from the queue with pygame method.
+        Stores events to the list.
+
+        Returns:
+            A list that contains various events in string format.
+        """
         events = pygame.event.get()
         result = []
         for event in events:

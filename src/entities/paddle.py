@@ -1,6 +1,16 @@
 import pygame
 
 class Paddle(pygame.sprite.Sprite):
+    """Class that models the paddle in the game.
+
+    Attributes:
+        speed: Paddle speed.
+        size: Tuple that defines paddle height and width in pixels.
+        game_area: GameArea object that defines game area size.
+
+    Args:
+        pygame (Sprite): Class inherits pygame Sprite class for game objects.
+    """
     def __init__(self, speed, size, game_area):
         super().__init__()
         self.surf = pygame.Surface((size[1], size[0]))
@@ -16,6 +26,12 @@ class Paddle(pygame.sprite.Sprite):
         self.size = size
 
     def update(self, events):
+        """Checks user generated events and sets movement direction accordingly.
+        Calls _move() method to move the paddle.
+
+        Args:
+            events: List of various events that the user can make.
+        """
         for event in events:
             if event == "LEFT_DOWN":
                 self.left = True
@@ -25,23 +41,25 @@ class Paddle(pygame.sprite.Sprite):
                 self.left = False
             if event == "RIGHT_UP":
                 self.right = False
-        self.move()
+        self._move()
 
-    def move(self):
+    def _move(self):
         if self.left:
-            self.move_left()
+            self._move_left()
         if self.right:
-            self.move_right()
+            self._move_right()
 
-    def move_left(self):
+    def _move_left(self):
         if self.rect.left > 0:
             self.rect.move_ip(-self.speed, 0)
 
-    def move_right(self):
+    def _move_right(self):
         if self.rect.right < self.width:
             self.rect.move_ip(self.speed, 0)
 
     def reset(self):
+        """Resets the paddle to the default position and sets movement to zero.
+        """
         self.rect.x = self.game_area.width/2 - self.size[1]/2
         self.left = False
         self.right = False

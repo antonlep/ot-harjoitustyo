@@ -2,6 +2,15 @@ import sys
 
 
 class GameLoop:
+    """Class that keeps track of the game status during running.
+
+    Attributes:
+        lives: Number of lives left.
+        game_level: Level number that is currently in play.
+        renderer: Renderer object that handles object display.
+        event_queue: EventQueue object that handles user generated events.
+        clock: pygame.time.Clock object that monitors time.
+    """
     def __init__(self, lives, game_level, renderer, event_queue, clock):
         self.game_level = game_level
         self.renderer = renderer
@@ -14,16 +23,20 @@ class GameLoop:
         self.paused = True
 
     def start(self):
+        """Method that is running continuously during gameplay
+        and handles various events that can happen using internal methods.
+        Sends current game state to the renderer for display and updates the clock.
+        """
         while self.running:
             events = self.event_queue.get_events()
-            self.check_events(events)
-            self.update_game_level(events)
-            self.check_level()
-            self.check_lives()
+            self._check_events(events)
+            self._update_game_level(events)
+            self._check_level()
+            self._check_lives()
             self.renderer.render(self.game_level, self.lives, self.points, self.level)
             self.clock.tick(60)
 
-    def restart(self):
+    def _restart(self):
         self.game_level.reset_all()
         self.game_level.ball.speed = 7
         self.level = 1
@@ -31,41 +44,41 @@ class GameLoop:
         self.points = 0
         self.paused = True
 
-    def start_game(self):
+    def _start_game(self):
         self.game_level.start()
         self.paused = False
 
-    def next_level(self):
+    def _next_level(self):
         self.game_level.reset_all()
         self.game_level.ball.speed += 2
         self.level += 1
         self.paused = True
 
-    def check_lives(self):
+    def _check_lives(self):
         if self.game_level.ball_out():
             self.lives -= 1
             if self.lives == 0:
-                self.game_over()
+                self._game_over()
             else:
                 self.game_level.reset()
                 self.paused = True
 
-    def check_level(self):
+    def _check_level(self):
         if not self.paused:
             if self.game_level.no_tiles():
-                self.next_level()
+                self._next_level()
 
 
-    def check_events(self, events):
+    def _check_events(self, events):
         for event in events:
             if event == "QUIT":
                 self.running = False
             if event == "N":
-                self.restart()
+                self._restart()
             if event == "SPACE" and self.paused:
-                self.start_game()
+                self._start_game()
 
-    def update_game_level(self, events):
+    def _update_game_level(self, events):
         self.game_level.update(events)
         if self.paused:
             self.game_level.ball_on_paddle()
@@ -74,9 +87,9 @@ class GameLoop:
             if self.game_level.tile_collision():
                 self.points += 1
 
-    def game_over(self):
+    def _game_over(self):
         while True:
-            self.renderer.game_over_screen(self.points, self.level)
+            self.renderer.game_over_screen(self.lives, self.points, self.level)
             events = self.event_queue.get_events()
             for event in events:
                 if event == "QUIT":
@@ -84,6 +97,6 @@ class GameLoop:
                 if event == "N":
                     self.running = True
                     self.paused = True
-                    self.restart()
+                    self._restart()
                     self.start()
                     break
