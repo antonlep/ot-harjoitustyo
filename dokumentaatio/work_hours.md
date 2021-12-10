@@ -12,4 +12,5 @@
 | 28.11.|   1  | update documentation |
 |  3.11.|   5  | add possibility to start a new game, fix live counting and game over screen |
 |  7.12.|   2  | make a release, update documentation, minor code fixes|
-| total |  27  | 
+| 10.12.|   2  | add next level when all tiles cleared |
+| total |  29  | 
