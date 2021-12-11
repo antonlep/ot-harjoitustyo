@@ -96,7 +96,8 @@ class GameLoop:
         return 0
 
     def _insert_score(self):
-        self.repository.add("name", self.points)
+        #possibility to insert name to be added
+        self.repository.add("", self.points)
 
     def _game_over(self):
         high_scores = self._update_high_scores()
