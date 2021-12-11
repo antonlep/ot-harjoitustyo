@@ -40,7 +40,7 @@ class GameLoop:
 
     def _restart(self):
         self.game_level.reset_all()
-        self.game_level.ball.speed = 7
+        self.game_level.ball.speed = 5
         self.level = 1
         self.lives = 3
         self.points = 0
@@ -96,14 +96,11 @@ class GameLoop:
         return 0
 
     def _insert_score(self):
-        #to be added
-        pass
+        self.repository.add("name", self.points)
 
     def _game_over(self):
+        high_scores = self._update_high_scores()
         while True:
-            high_scores = self.repository.get_top10()
-            if not high_scores or self.points > high_scores[-1]["score"]:
-                self._insert_score()
             self.renderer.game_over_screen(self.lives, self.points, self.level, high_scores)
             events = self.event_queue.get_events()
             for event in events:
@@ -115,3 +112,9 @@ class GameLoop:
                     self._restart()
                     self.start()
                     break
+
+    def _update_high_scores(self):
+        high_scores = self.repository.get_top10()
+        if not high_scores or len(high_scores) < 10 or self.points > high_scores[-1]["score"]:
+            self._insert_score()
+        return self.repository.get_top10()
