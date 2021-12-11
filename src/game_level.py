@@ -2,7 +2,7 @@ import pygame
 from entities.tile import Tile
 
 class GameLevel:
-    """Class that models game objects inside the game area.
+    """Class that models game objects and their interactions inside the game area.
 
     Attributes:
         game_area: GameArea object that defines game area size.
@@ -13,7 +13,24 @@ class GameLevel:
         self.game_area = game_area
         self.paddle = paddle
         self.ball = ball
+        self.game_area_size = (game_area.height, game_area.width)
         self.reset_all()
+
+    def _ball_update(self):
+        if self.ball.rect.left < 0:
+            self.ball.right = 1
+        if self.ball.rect.right > self.game_area_size[1]:
+            self.ball.right = -1
+        if self.ball.rect.top < 0:
+            self.ball.down = 1
+        self.ball.move()
+
+    def _paddle_update(self, events):
+        self.paddle.update(events)
+        if self.paddle.right and self.paddle.rect.right < self.game_area_size[1]:
+            self.paddle.move_right()
+        if self.paddle.left and self.paddle.rect.left > 0:
+            self.paddle.move_left()
 
     def update(self, events):
         """Updates ball and paddle positions.
@@ -21,14 +38,14 @@ class GameLevel:
         Args:
             events: List of keypress events.
         """
-        self.ball.update()
-        self.paddle.update(events)
+        self._ball_update()
+        self._paddle_update(events)
 
     def check_paddle_collision(self):
         """Checks collisions between the ball and the paddle.
         """
         if pygame.sprite.spritecollideany(self.paddle, self.ball_group):
-            self.ball.paddle_collide()
+            self.ball.down = -1
 
     def tile_collision(self):
         """Checks collisions between the ball and tiles.
@@ -49,21 +66,22 @@ class GameLevel:
         Returns:
             True if ball is out, False otherwise.
         """
-        if self.ball.out:
+        if self.ball.rect.bottom > self.game_area_size[0]:
             return True
         return False
 
     def reset(self):
-        """Sets ball to the default position.
+        """Resets ball to the default position.
         """
-        self.ball.reset()
+        self.ball.reset(self.game_area_size[1]/2, self.game_area_size[0]-40)
 
     def reset_all(self):
         """Sets ball and paddle to the default position.
         Creates new tiles and new sprite Group objects.
         """
-        self.ball.reset()
-        self.paddle.reset()
+        self.reset()
+        self.paddle.reset(self.game_area_size[1]/2-self.paddle.size[1]/2,
+                            self.game_area_size[0]-self.paddle.size[0])
         self.create_tiles()
         self.paddle_group = pygame.sprite.Group(self.paddle)
         self.ball_group = pygame.sprite.Group(self.ball)
@@ -100,3 +118,4 @@ class GameLevel:
             True if no tiles left, False otherwise.
         """
         return not self.tiles_group
+

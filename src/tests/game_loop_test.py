@@ -30,8 +30,8 @@ class TestGameLoop(unittest.TestCase):
         paddle_size = (20, 100)
         self.speed = 10
         game_area = GameArea(600, 800)
-        self.paddle = Paddle(self.speed, paddle_size, game_area)
-        self.ball = Ball(self.speed, game_area)
+        self.paddle = Paddle(self.speed, paddle_size)
+        self.ball = Ball(self.speed)
         self.game_level = GameLevel(game_area, self.paddle, self.ball)
         self.lives = 2
 
@@ -43,11 +43,11 @@ class TestGameLoop(unittest.TestCase):
                             StubEventQueue(events),
                             StubClock())
         game_loop.start()
-        self.assertEqual(self.ball.right, 0)
-        self.assertEqual(self.ball.down, 0)
-        self.assertEqual(self.ball.rect.x, 400)
-        self.assertEqual(self.ball.rect.y, 560)
-        self.assertEqual(self.paddle.rect.x, 350)
+        self.assertEqual(self.game_level.ball.right, 0)
+        self.assertEqual(self.game_level.ball.down, 0)
+        self.assertEqual(self.game_level.ball.rect.x, 400)
+        self.assertEqual(self.game_level.ball.rect.y, 560)
+        self.assertEqual(self.game_level.paddle.rect.x, 350)
         self.assertEqual(game_loop.lives, 2)
         self.assertEqual(game_loop.points, 0)
         self.assertEqual(game_loop.paused, True)
