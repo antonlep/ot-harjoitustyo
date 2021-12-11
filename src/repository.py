@@ -16,6 +16,12 @@ class Repository:
             """)
         self._connection.commit()
 
+    def get_top_score(self):
+        cursor = self._connection.cursor()
+        cursor.execute("SELECT * FROM Scores ORDER BY score DESC LIMIT 1")
+        row = cursor.fetchone()
+        return row["score"]
+
     def get_top10(self):
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM Scores ORDER BY score DESC LIMIT 10")

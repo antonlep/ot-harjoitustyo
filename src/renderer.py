@@ -8,9 +8,9 @@ class Renderer:
     """
     def __init__(self, display):
         self.display = display
-        self.font = pygame.font.Font('freesansbold.ttf', 18)
+        self.font = pygame.font.Font('freesansbold.ttf', 16)
 
-    def render(self, game_level, lives, points, level):
+    def render(self, game_level, lives, points, level, top_score):
         """Renders all game level objects to the screen.
         Also displays current game state information and displays instructions."
 
@@ -24,6 +24,7 @@ class Renderer:
         self._display_lives(lives)
         self._display_points(points)
         self._display_level(level)
+        self._display_top_score(top_score)
         self._display_instructions()
         for entity in game_level.all_entities:
             self.display.blit(entity.surf, entity.rect)
@@ -59,6 +60,11 @@ class Renderer:
         position = (50,20)
         self._print_text(text, position)
 
+    def _display_top_score(self, score):
+        text = "Top score " + str(score)
+        position = (305,20)
+        self._print_text(text, position)
+
     def _display_points(self, points):
         text = "Points " + str(points)
         position = (200, 20)
@@ -71,7 +77,7 @@ class Renderer:
 
     def _display_instructions(self):
         text = "N to start a new game, Space to launch a ball"
-        position = (500, 20)
+        position = (600, 20)
         self._print_text(text, position)
 
     def _print_text(self, text, position, init_font=None):

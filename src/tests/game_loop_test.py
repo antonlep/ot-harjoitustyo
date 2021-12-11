@@ -9,10 +9,16 @@ from game_loop import GameLoop
 
 class StubRepository:
     def get_top10(self):
-        pass
+        list = []
+        for i in range(10):
+            list.append({"name": "asdf", "score": 1})
+        return list
+
+    def get_top_score(self):
+        return {"name": "asdf", "score": 1}
 
 class StubRenderer:
-    def render(self, game_level, lives, points, level):
+    def render(self, game_level, lives, points, level, top_score):
         pass
 
     def game_over_screen(self):
@@ -46,7 +52,7 @@ class TestGameLoop(unittest.TestCase):
                             StubRenderer(),
                             StubEventQueue(events),
                             StubClock(),
-                            StubRepository)
+                            StubRepository())
         game_loop.start()
         self.assertEqual(self.game_level.ball.right, 0)
         self.assertEqual(self.game_level.ball.down, 0)

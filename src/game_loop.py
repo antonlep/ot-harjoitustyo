@@ -2,7 +2,7 @@ import sys
 
 
 class GameLoop:
-    """Class that keeps track of the game status during running.
+    """Class that keeps track of the game state and handles events during running.
 
     Attributes:
         lives: Number of lives left.
@@ -34,7 +34,8 @@ class GameLoop:
             self._update_game_level(events)
             self._check_level()
             self._check_lives()
-            self.renderer.render(self.game_level, self.lives, self.points, self.level)
+            top_score = self._check_top_score()
+            self.renderer.render(self.game_level, self.lives, self.points, self.level, top_score)
             self.clock.tick(60)
 
     def _restart(self):
@@ -88,9 +89,21 @@ class GameLoop:
             if self.game_level.tile_collision():
                 self.points += 1
 
+    def _check_top_score(self):
+        score = self.repository.get_top_score()
+        if score:
+            return score
+        return 0
+
+    def _insert_score(self):
+        #to be added
+        pass
+
     def _game_over(self):
         while True:
             high_scores = self.repository.get_top10()
+            if self.points > high_scores[-1]["score"]:
+                self._insert_score()
             self.renderer.game_over_screen(self.lives, self.points, self.level, high_scores)
             events = self.event_queue.get_events()
             for event in events:
