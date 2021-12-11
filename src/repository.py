@@ -20,13 +20,19 @@ class Repository:
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM Scores ORDER BY score DESC LIMIT 1")
         row = cursor.fetchone()
-        return row["score"]
+        if row:
+            return row["score"]
+        else:
+            return None
 
     def get_top10(self):
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM Scores ORDER BY score DESC LIMIT 10")
         rows = cursor.fetchall()
-        return rows
+        if rows:
+            return rows
+        else:
+            return None
 
     def add(self, name, score):
         cursor = self._connection.cursor()

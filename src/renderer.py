@@ -51,9 +51,10 @@ class Renderer:
         title_font = pygame.font.Font('freesansbold.ttf', 30)
         self._print_text("High scores", (400, 250), title_font)
         y_pos = 300
-        for row in high_scores:
-            self._print_text(row["name"] + " " + str(row["score"]), (400, y_pos))
-            y_pos += 20
+        if high_scores:
+            for row in high_scores:
+                self._print_text(row["name"] + " " + str(row["score"]), (400, y_pos))
+                y_pos += 20
 
     def _display_lives(self, lives):
         text = "Lives " + str(lives)

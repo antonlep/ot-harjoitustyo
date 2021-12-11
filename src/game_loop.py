@@ -102,7 +102,7 @@ class GameLoop:
     def _game_over(self):
         while True:
             high_scores = self.repository.get_top10()
-            if self.points > high_scores[-1]["score"]:
+            if not high_scores or self.points > high_scores[-1]["score"]:
                 self._insert_score()
             self.renderer.game_over_screen(self.lives, self.points, self.level, high_scores)
             events = self.event_queue.get_events()
