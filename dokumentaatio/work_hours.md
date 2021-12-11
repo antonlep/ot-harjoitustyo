@@ -13,4 +13,5 @@
 |  3.11.|   5  | add possibility to start a new game, fix live counting and game over screen |
 |  7.12.|   2  | make a release, update documentation, minor code fixes|
 | 10.12.|   2  | add next level when all tiles cleared |
-| total |  29  | 
+| 11.12.|   2  | refactor to move game area object from ball and paddle to game level object |
+| total |  31  | 
