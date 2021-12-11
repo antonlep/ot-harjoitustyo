@@ -20,11 +20,12 @@ A game, where the goal is to knock down rows of bricks with a ball, using a mova
 - [ ] User can start a new game
 - [ ] When user misses the ball three times, game is over
 - [x] After user has cleared all the bricks from the game area, the next level starts with higher difficulty
-- [ ] User can change the game difficulty level which controls the ball speed
 - [x] High score list is displayed after game over
-- [ ] User can display high score list
 - [x] Highest scores are added to high score list
 - [ ] User can insert name to high score list
+- [ ] User can display high score list
+- [ ] User can change the game difficulty level which controls the ball speed
+
 ## Further development ideas
 - Multiple levels with different brick layouts
 - Some bricks would require multiple hits to break
