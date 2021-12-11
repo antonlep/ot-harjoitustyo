@@ -13,5 +13,5 @@
 |  3.11.|   5  | add possibility to start a new game, fix live counting and game over screen |
 |  7.12.|   2  | make a release, update documentation, minor code fixes|
 | 10.12.|   2  | add next level when all tiles cleared |
-| 11.12.|   6  | refactor GameLevel and entities, add repository and working high score display|
+| 11.12.|   6  | refactor GameLevel and entities, add repository and high score display|
 | total |  31  | 
