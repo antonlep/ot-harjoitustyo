@@ -29,7 +29,7 @@ class Renderer:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
 
-    def game_over_screen(self, lives, points, level):
+    def game_over_screen(self, lives, points, level, high_scores):
         """Shows game over screen.
 
         Args:
@@ -42,8 +42,17 @@ class Renderer:
         self._display_level(level)
         self._display_instructions()
         font = pygame.font.Font('freesansbold.ttf', 40)
-        self._print_text("Game Over", (400, 200), font)
+        self._print_text("Game Over", (400, 150), font)
+        self._display_high_scores(high_scores)
         pygame.display.flip()
+
+    def _display_high_scores(self, high_scores):
+        title_font = pygame.font.Font('freesansbold.ttf', 30)
+        self._print_text("High scores", (400, 250), title_font)
+        y_pos = 300
+        for row in high_scores:
+            self._print_text(row["name"] + " " + str(row["score"]), (400, y_pos))
+            y_pos += 20
 
     def _display_lives(self, lives):
         text = "Lives " + str(lives)

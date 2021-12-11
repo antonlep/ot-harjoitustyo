@@ -11,11 +11,12 @@ class GameLoop:
         event_queue: EventQueue object that handles user generated events.
         clock: pygame.time.Clock object that monitors time.
     """
-    def __init__(self, lives, game_level, renderer, event_queue, clock):
+    def __init__(self, lives, game_level, renderer, event_queue, clock, repository):
         self.game_level = game_level
         self.renderer = renderer
         self.event_queue = event_queue
         self.clock = clock
+        self.repository = repository
         self.lives = lives
         self.points = 0
         self.level = 1
@@ -89,7 +90,8 @@ class GameLoop:
 
     def _game_over(self):
         while True:
-            self.renderer.game_over_screen(self.lives, self.points, self.level)
+            high_scores = self.repository.get_top10()
+            self.renderer.game_over_screen(self.lives, self.points, self.level, high_scores)
             events = self.event_queue.get_events()
             for event in events:
                 if event == "QUIT":

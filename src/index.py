@@ -6,15 +6,17 @@ from entities.game_area import GameArea
 from game_loop import GameLoop
 from renderer import Renderer
 from event_queue import EventQueue
+from repository import Repository
 
 HEIGHT = 600
 WIDTH = 800
 PADDLE_SIZE = (20, 100)
 PADDLE_SPEED = 10
 BALL_SPEED = 7
-LIVES = 3
+LIVES = 1
 
 def main():
+    score_repository = Repository()
     display = pygame.display.set_mode([WIDTH, HEIGHT])
     pygame.display.set_caption("Breakout")
     game_area = GameArea(HEIGHT, WIDTH)
@@ -25,7 +27,7 @@ def main():
     pygame.init()
     renderer = Renderer(display)
     event_queue = EventQueue()
-    game_loop = GameLoop(LIVES, game_level_1, renderer, event_queue, clock)
+    game_loop = GameLoop(LIVES, game_level_1, renderer, event_queue, clock, score_repository)
     game_loop.start()
 
 if __name__=="__main__":
