@@ -7,6 +7,10 @@ from entities.game_area import GameArea
 from game_level import GameLevel
 from game_loop import GameLoop
 
+class StubRepository:
+    def get_top10(self):
+        pass
+
 class StubRenderer:
     def render(self, game_level, lives, points, level):
         pass
@@ -41,7 +45,8 @@ class TestGameLoop(unittest.TestCase):
                             self.game_level,
                             StubRenderer(),
                             StubEventQueue(events),
-                            StubClock())
+                            StubClock(),
+                            StubRepository)
         game_loop.start()
         self.assertEqual(self.game_level.ball.right, 0)
         self.assertEqual(self.game_level.ball.down, 0)
@@ -58,7 +63,8 @@ class TestGameLoop(unittest.TestCase):
                             self.game_level,
                             StubRenderer(),
                             StubEventQueue(events),
-                            StubClock())
+                            StubClock(),
+                            StubRepository())
         game_loop.start()
         self.assertEqual(self.paddle.rect.x, 340)
 
@@ -75,7 +81,8 @@ class TestGameLoop(unittest.TestCase):
                             self.game_level,
                             StubRenderer(),
                             StubEventQueue(events),
-                            StubClock())
+                            StubClock(),
+                            StubRepository())
         game_loop.paused = False
         game_loop.start()
         self.assertEqual(self.ball.right, 0)
@@ -93,7 +100,8 @@ class TestGameLoop(unittest.TestCase):
                             self.game_level,
                             StubRenderer(),
                             StubEventQueue(events),
-                            StubClock())
+                            StubClock(),
+                            StubRepository())
         game_loop.start()
         self.assertEqual(self.ball.right, 1)
         self.assertEqual(self.ball.down, -1)
@@ -107,7 +115,8 @@ class TestGameLoop(unittest.TestCase):
                             self.game_level,
                             renderer_mock,
                             StubEventQueue(events),
-                            StubClock())
+                            StubClock(),
+                            StubRepository())
         self.ball.rect.y = 1000
         game_loop.paused = False
         with self.assertRaises(SystemExit):
