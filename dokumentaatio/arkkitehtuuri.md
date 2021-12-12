@@ -5,13 +5,15 @@ Program has hierarchical structure with three main levels: On top level, GameLoo
 ![kaavio](https://user-images.githubusercontent.com/76871257/145709371-7f60b10c-c89a-4495-95e4-a56c6ee5d60a.PNG)
 
 ## UI
-
+User interface is implemented using pygame library for object display and user input. EventQueue reads user input from keypresses, and Renderer displays objects to the screen using pygame Display object.  
 ![cap2](https://user-images.githubusercontent.com/76871257/145710098-3a30dd83-f3e8-4139-ba6f-828e9bdc5f40.PNG)
 
-
 ## Game logic
+Game object positions, movements and their interactions are handled inside GameLevel classs and objects below. Current game state, number of lives, number of points and current level are tracked inside GameLoop.
+![cap3](https://user-images.githubusercontent.com/76871257/145710314-bcb37b73-7739-43b9-b305-bebad2e79092.PNG)
 
 ## Data storage
+
 
 
 ## Sequence diagram
