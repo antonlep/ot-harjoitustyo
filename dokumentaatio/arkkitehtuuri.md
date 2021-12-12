@@ -9,7 +9,7 @@ User interface is implemented using pygame library for object display and user i
 ![cap2](https://user-images.githubusercontent.com/76871257/145710098-3a30dd83-f3e8-4139-ba6f-828e9bdc5f40.PNG)
 
 ## Game logic
-Game object positions, movements and their interactions are handled inside GameLevel classs and objects below. Current game state, number of lives, number of points and current level are tracked inside GameLoop.
+Game object positions and movements are handled inside GameLevel classs and objects below. Pygame library is used for modelling game objects and their interactions. Current game state, number of lives, number of points and current level are tracked inside GameLoop.
 ![cap3](https://user-images.githubusercontent.com/76871257/145710314-bcb37b73-7739-43b9-b305-bebad2e79092.PNG)
 
 ## Data storage
