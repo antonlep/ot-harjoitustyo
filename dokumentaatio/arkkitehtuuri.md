@@ -13,7 +13,8 @@ Game object positions, movements and their interactions are handled inside GameL
 ![cap3](https://user-images.githubusercontent.com/76871257/145710314-bcb37b73-7739-43b9-b305-bebad2e79092.PNG)
 
 ## Data storage
-
+Repository takes care of data storage using SQLite database. Database name is defined in .env file that is located in application root folder.
+![cap4](https://user-images.githubusercontent.com/76871257/145710447-6de2eead-714e-4b41-8c55-c88b3fcc2be4.PNG)
 
 
 ## Sequence diagram
