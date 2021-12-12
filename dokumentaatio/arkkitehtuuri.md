@@ -3,6 +3,7 @@
 ## Class diagram
 
 ![kaavio](https://user-images.githubusercontent.com/76871257/143781059-ea33a3d6-a537-41fa-ab24-dd74d334eb84.jpg)
+![kaavio](https://user-images.githubusercontent.com/76871257/145709136-0080ce9f-b61e-4b9a-bb1d-5d060556e58c.png)
 
 ## Sequence diagram
 ### User presses N to start a new game
