@@ -2,7 +2,7 @@ import pygame
 
 
 class Tile(pygame.sprite.Sprite):
-    """Class that models tiles in the game.
+    """Class that models tile geometry and position.
 
     Attributes:
         x_init: Location in x-direction.

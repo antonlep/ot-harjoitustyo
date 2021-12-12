@@ -19,7 +19,7 @@ def create_tables(connection):
     connection.commit()
 
 def initialize_database():
-    connection = get_database_connection()
+    connection = get_database_connection(DATABASE)
     drop_tables(connection)
     create_tables(connection)
 

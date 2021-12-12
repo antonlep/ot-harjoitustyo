@@ -36,7 +36,7 @@ class GameLevel:
         """Updates ball and paddle positions.
 
         Args:
-            events: List of keypress events.
+            events: List of strings of keypress events.
         """
         self._ball_update()
         self._paddle_update(events)
@@ -77,12 +77,12 @@ class GameLevel:
 
     def reset_all(self):
         """Sets ball and paddle to the default position.
-        Creates new tiles and new sprite Group objects.
+        Removes old tles and creates new ones.
         """
         self.reset()
         self.paddle.reset(self.game_area_size[1]/2-self.paddle.size[1]/2,
                             self.game_area_size[0]-self.paddle.size[0])
-        self.create_tiles()
+        self._create_tiles()
         self.paddle_group = pygame.sprite.Group(self.paddle)
         self.ball_group = pygame.sprite.Group(self.ball)
         self.all_entities = pygame.sprite.Group(
@@ -90,14 +90,10 @@ class GameLevel:
             self.paddle_group,
             self.tiles_group)
 
-    def create_tiles(self):
-        """Removes old tiles and creates new ones that are put inside sprite Group object.
-        """
+    def _create_tiles(self):
         self.tiles_group = pygame.sprite.Group()
         for i in range(105, self.game_area.width, 100):
-        # for i in range(505, self.game_area.width, 100):
             for j in range(40, 80, 20):
-            # for j in range(40, 60, 20):
                 tile = Tile(i, j)
                 self.tiles_group.add(tile)
 

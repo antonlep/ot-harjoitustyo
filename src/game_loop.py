@@ -10,6 +10,7 @@ class GameLoop:
         renderer: Renderer object that handles object display.
         event_queue: EventQueue object that handles user generated events.
         clock: pygame.time.Clock object that monitors time.
+        repository: Repository object where top scores are saved.
     """
     def __init__(self, lives, game_level, renderer, event_queue, clock, repository):
         self.game_level = game_level

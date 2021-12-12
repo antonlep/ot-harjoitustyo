@@ -1,7 +1,7 @@
 import pygame
 
 class Ball(pygame.sprite.Sprite):
-    """Class that models the ball in the game.
+    """Class that models the ball geometry and movement.
 
     Attributes:
         speed: Ball speed.
@@ -37,7 +37,7 @@ class Ball(pygame.sprite.Sprite):
         self.rect.move_ip(self.right*self.speed, self.down*self.speed)
 
     def start(self):
-        """Sets direction values to nonzero to start the movement.
+        """Sets direction values to nonzero to start the movement to up and right.
         """
         self.right = 1
         self.down = -1
