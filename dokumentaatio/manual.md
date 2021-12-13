@@ -9,9 +9,11 @@ File names that are used for data storage are defined in .env file in the root f
 ## Installation
 
 Install dependencies
+
 `poetry install`
 
 Start the game
+
 `poetry run invoke start`
 
 ## Keys
