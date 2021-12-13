@@ -8,11 +8,11 @@ File names that are used for data storage are defined in .env file in the root f
 
 ## Installation
 
-Install dependencies
+Install dependencies:
 
 `poetry install`
 
-Start the game
+Start the game:
 
 `poetry run invoke start`
 
