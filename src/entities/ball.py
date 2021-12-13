@@ -19,15 +19,15 @@ class Ball(pygame.sprite.Sprite):
         self.right = 0
         self.down = 0
 
-    def reset(self, x, y):
+    def reset(self, x_coord, y_coord):
         """Resets ball to the specified position and sets movement to zero.
 
         Args:
-            x: X-position in pixels.
-            y: Y-position in pixels.
+            x_coord: X-position in pixels.
+            y_coord: Y-position in pixels.
         """
-        self.rect.x = x
-        self.rect.y = y
+        self.rect.x = x_coord
+        self.rect.y = y_coord
         self.right = 0
         self.down = 0
 

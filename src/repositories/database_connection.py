@@ -1,4 +1,3 @@
-import os 
 import sqlite3
 
 def get_database_connection(db_file):

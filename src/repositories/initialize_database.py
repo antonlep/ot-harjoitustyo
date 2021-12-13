@@ -1,5 +1,5 @@
-from database_connection import get_database_connection
-from config import DATABASE
+from repositories.database_connection import get_database_connection
+from repositories.config import DATABASE
 
 def drop_tables(connection):
     cursor = connection.cursor()

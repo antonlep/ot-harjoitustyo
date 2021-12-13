@@ -30,8 +30,7 @@ class Repository:
         row = cursor.fetchone()
         if row:
             return row["score"]
-        else:
-            return None
+        return None
 
     def get_top10(self):
         """Gets top 10 scores from database.
@@ -44,8 +43,7 @@ class Repository:
         rows = cursor.fetchall()
         if rows:
             return rows
-        else:
-            return None
+        return None
 
     def add(self, name, score):
         """Stores name and score to database.

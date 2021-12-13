@@ -114,4 +114,3 @@ class GameLevel:
             True if no tiles left, False otherwise.
         """
         return not self.tiles_group
-
