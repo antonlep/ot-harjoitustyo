@@ -16,8 +16,14 @@ Game object positions and movements are handled inside GameLevel classs and obje
 Repository takes care of data storage using SQLite database. Database name is defined in .env file that is located in application root folder.
 ![cap4](https://user-images.githubusercontent.com/76871257/145710447-6de2eead-714e-4b41-8c55-c88b3fcc2be4.PNG)
 
-
 ## Main functionalities
+
+### Example of a game loop, where right key is pressed and ball hits one tile
+First, GameLoop gets information of keypress from EventQueue. Then it calls GameLevel to update object positions, mainly to move ball to next position and paddle to the right. After objects have been moved, collisions between paddle, ball and tiles are checked. In this example there was tile collision, so GameLevel calls Tile kill method to remove the tile from the game area. Next, there is a check if all tiles have been removed or if the ball has gone outside the game area. Top score is taken from Repository, and game objects and game state information is sent to Renderer. Renderer calls Display methods to display objects to the screen. Finally clock is advanced, and in the next stage the loop would start again. 
+![Capture](https://user-images.githubusercontent.com/76871257/145851919-34b3d0d3-bf2e-4dd2-add1-08550c951fad.PNG)
+
 ### User presses N to start a new game
-![kaavio2](https://user-images.githubusercontent.com/76871257/145069517-b10af718-548a-443f-b019-c36abe461fd2.PNG)
 First, GameLoop checks what keys have been pressed. When N key is pressed, GameLevel resets ball and paddle position, removes old tiles and creates new tiles. Ball is set up to lie on top of the paddle and objects are rendered to the display. Finally clock is advanced.
+![kaavio2](https://user-images.githubusercontent.com/76871257/145069517-b10af718-548a-443f-b019-c36abe461fd2.PNG)
+
+
