@@ -13,6 +13,8 @@ Breakout game created with Python 3 with pygame library.
 
 [Architecture description](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[User manual](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/manual.md)
+
 ## Required software
 
 - Python (>= 3.8)
