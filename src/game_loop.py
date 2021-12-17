@@ -29,6 +29,7 @@ class GameLoop:
         and handles various events that can happen using internal methods.
         Sends current game state to the renderer for display and updates the clock.
         """
+        self._main_menu()
         while self.running:
             events = self.event_queue.get_events()
             self._check_events(events)
@@ -38,6 +39,7 @@ class GameLoop:
             top_score = self._check_top_score()
             self.renderer.render(self.game_level, self.lives, self.points, self.level, top_score)
             self.clock.tick(60)
+
 
     def _restart(self):
         self.game_level.reset_all()
@@ -78,6 +80,7 @@ class GameLoop:
                 self.running = False
             if event == "N":
                 self._restart()
+                self.start()
             if event == "SPACE" and self.paused:
                 self._start_game()
 
@@ -114,6 +117,24 @@ class GameLoop:
                     self._restart()
                     self.start()
                     break
+
+    def _main_menu(self):
+        selected = 0
+        while True:
+            self.renderer.main_menu_screen(selected)
+            events = self.event_queue.get_events()
+            for event in events:
+                if event == "QUIT":
+                    sys.exit()
+                if event == "DOWN_DOWN":
+                    selected = min(1, selected + 1)
+                elif event == "UP_DOWN":
+                    selected = max(0, selected - 1)
+                if event == "RETURN_DOWN" or event == "SPACE_DOWN":
+                    if selected == 0:
+                        return
+                    if selected == 1:
+                        quit()
 
     def _update_high_scores(self):
         high_scores = self.repository.get_top10()

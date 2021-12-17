@@ -1,4 +1,5 @@
 import pygame
+import pygame_menu
 
 class Renderer:
     """Class that renders game objects to the screen.
@@ -9,6 +10,9 @@ class Renderer:
     def __init__(self, display):
         self.display = display
         self.font = pygame.font.Font('freesansbold.ttf', 16)
+        self.font_large = pygame.font.Font('freesansbold.ttf', 32)
+        self.width = self.display.get_size()[0]
+        self.height = self.display.get_size()[1]
 
     def render(self, game_level, lives, points, level, top_score):
         """Renders all game level objects to the screen.
@@ -28,6 +32,22 @@ class Renderer:
         self._display_instructions()
         for entity in game_level.all_entities:
             self.display.blit(entity.surf, entity.rect)
+        pygame.display.flip()
+
+    def main_menu_screen(self, selected):
+        self.display.fill((0, 0, 0))
+        if selected == 0:
+            text_start = self.font_large.render("START", self.font_large, (255, 255, 255))
+        else:
+            text_start = self.font_large.render("START", self.font_large, (200, 200, 200))
+        if selected == 1:
+            text_quit = self.font_large.render("QUIT", self.font_large, (255, 255, 255))
+        else:
+            text_quit = self.font_large.render("QUIT", self.font_large, (200, 200, 200))
+        start_rect=text_start.get_rect()
+        quit_rect=text_quit.get_rect()
+        self.display.blit(text_start, (self.width/2 - (start_rect[2]/2), 200))
+        self.display.blit(text_quit, (self.width/2 - (quit_rect[2]/2), 250))
         pygame.display.flip()
 
     def game_over_screen(self, lives, points, level, high_scores):
