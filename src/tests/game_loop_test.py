@@ -85,7 +85,7 @@ class TestGameLoop(unittest.TestCase):
     #     self.ball.rectx = 100
     #     self.ball.recty = 100
     #     self.paddle.rectx = 10
-    #     events = ["RETURN_DOWN","LEFT", "LEFT", "SPACE", "N", "QUIT"]
+    #     events = ["RETURN_DOWN","LEFT", "LEFT", "SPACE", "N", "RETURN_DOWN", "QUIT"]
     #     game_loop = GameLoop(self.lives,
     #                         self.game_level,
     #                         StubRenderer(),
