@@ -16,4 +16,5 @@
 | 11.12.|   6  | refactor GameLevel and entities, add repository and high score display |
 | 12.12.|   3  | architecture documentation update and repository tests |
 | 13.12.|   2  | documentation update and minor fixes |
-| total |  41  | 
+| 17.12.|   2  | main menu and option to change difficulty |
+| total |  43  | 
