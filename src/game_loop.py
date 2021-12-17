@@ -120,21 +120,22 @@ class GameLoop:
 
     def _main_menu(self):
         selected = 0
+        options = {0: "start", 1: "change_name", 2: "quit"}
         while True:
-            self.renderer.main_menu_screen(selected)
+            self.renderer.main_menu_screen(options[selected])
             events = self.event_queue.get_events()
             for event in events:
                 if event == "QUIT":
                     sys.exit()
                 if event == "DOWN_DOWN":
-                    selected = min(1, selected + 1)
+                    selected = min(2, selected + 1)
                 elif event == "UP_DOWN":
                     selected = max(0, selected - 1)
                 if event == "RETURN_DOWN" or event == "SPACE_DOWN":
-                    if selected == 0:
+                    if options[selected] == "start":
                         return
-                    if selected == 1:
-                        quit()
+                    if options[selected] == "quit":
+                        sys.exit()
 
     def _update_high_scores(self):
         high_scores = self.repository.get_top10()

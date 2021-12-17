@@ -34,13 +34,13 @@ class Renderer:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
 
-    def main_menu_screen(self, selected):
+    def main_menu_screen(self, option):
         self.display.fill((0, 0, 0))
-        if selected == 0:
+        if option == "start":
             text_start = self.font_large.render("START", self.font_large, (255, 255, 255))
         else:
             text_start = self.font_large.render("START", self.font_large, (200, 200, 200))
-        if selected == 1:
+        if option == "quit":
             text_quit = self.font_large.render("QUIT", self.font_large, (255, 255, 255))
         else:
             text_quit = self.font_large.render("QUIT", self.font_large, (200, 200, 200))
