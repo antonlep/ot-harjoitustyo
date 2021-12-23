@@ -130,25 +130,43 @@ class GameLoop:
                 return
 
     def _check_main_menu_events(self, events, selected, level, options):
+        start = False
+        option = options[selected]
         for event in events:
+            if option == "change_level":
+                level = self._change_level(event, level)
             if event == "QUIT":
                 sys.exit()
             if event == "DOWN_DOWN":
-                selected = min(2, selected + 1)
-            elif event == "UP_DOWN":
-                selected = max(0, selected - 1)
-            if event == "RETURN_DOWN" or event == "SPACE_DOWN":
-                if options[selected] == "start":
-                    return selected, level, True
-                if options[selected] == "quit":
-                    sys.exit()
-            if event == "LEFT_DOWN":
-                if options[selected] == "change_level":
-                    level = max(1, level - 1)
-            if event == "RIGHT_DOWN":
-                if options[selected] == "change_level":
-                    level = min(10, level + 1)
-        return selected, level, False
+                selected = self._menu_move_down(selected)
+            if event == "UP_DOWN":
+                selected = self._menu_move_up(selected)
+            if event == "RETURN_DOWN":
+                selected, start = self._menu_select(selected, option)
+                if start:
+                    return selected, level, start
+        return selected, level, start
+
+
+    def _menu_move_down(self, selected):
+        return min(2, selected + 1)
+
+    def _menu_move_up(self, selected):
+        return max(0, selected - 1)
+
+    def _menu_select(self, selected, option):
+        if option == "start":
+            return selected, True
+        elif option == "quit":
+            sys.exit()
+        return selected, False
+
+    def _change_level(self, event, level):
+        if event == "LEFT_DOWN":
+            level = max(1, level - 1)
+        if event == "RIGHT_DOWN":
+            level = min(10, level + 1)
+        return level
 
     def _update_high_scores(self):
         high_scores = self.repository.get_top10()
