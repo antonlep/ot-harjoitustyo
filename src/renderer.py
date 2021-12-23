@@ -35,25 +35,19 @@ class Renderer:
         pygame.display.flip()
 
     def main_menu_screen(self, option, level):
-        text_start = self.font_large.render("START", self.font_large, (100, 100, 100))
-        text_name = self.font_large.render("LEVEL " + str(level), self.font_large, (100, 100, 100))
-        text_quit = self.font_large.render("QUIT", self.font_large, (100, 100, 100))
-        if option == "start":
-            text_start = self.font_large.render("START", self.font_large, (255, 255, 255))
-        elif option == "change_level":
-            text_name = self.font_large.render("LEVEL " + str(level), self.font_large, (255, 255, 255))
-        elif option == "quit":
-            text_quit = self.font_large.render("QUIT", self.font_large, (255, 255, 255))
-        self._render_main_menu(text_start, text_name, text_quit)
-
-    def _render_main_menu(self, text_start, text_name, text_quit):
         self.display.fill((0, 0, 0))
-        start_rect=text_start.get_rect()
-        name_rect = text_name.get_rect()
-        quit_rect=text_quit.get_rect()
-        self.display.blit(text_start, (self.width/2 - (start_rect[2]/2), 200))
-        self.display.blit(text_name, (self.width/2 - (name_rect[2]/2), 250))
-        self.display.blit(text_quit, (self.width/2 - (quit_rect[2]/2), 300))
+        if option == "start":
+            self._display_start_option(True)
+            self._display_level_option(False, level)
+            self._display_quit_option(False)
+        elif option == "change_level":
+            self._display_start_option(False)
+            self._display_level_option(True, level)
+            self._display_quit_option(False)
+        elif option == "quit":
+            self._display_start_option(False)
+            self._display_level_option(False, level)
+            self._display_quit_option(True)
         pygame.display.flip()
 
     def game_over_screen(self, lives, points, level, high_scores):
@@ -107,12 +101,37 @@ class Renderer:
         position = (600, 20)
         self._print_text(text, position)
 
-    def _print_text(self, text, position, init_font=None):
+    def _display_start_option(self, active):
+        if active:
+            color = (255,255,255)
+        else:
+            color = (100, 100, 100)
+        self._print_text("START", (self.width/2, 200), self.font_large, color)
+
+    def _display_level_option(self, active, level):
+        if active:
+            color = (255,255,255)
+        else:
+            color = (100, 100, 100)
+        self._print_text("LEVEL " + str(level), (self.width/2, 250), self.font_large, color)
+
+    def _display_quit_option(self, active):
+        if active:
+            color = (255,255,255)
+        else:
+            color = (100, 100, 100)
+        self._print_text("QUIT", (self.width/2, 300), self.font_large, color)
+
+    def _print_text(self, text, position, init_font=None, color=(255,255,255)):
         if not init_font:
             font = self.font
         else:
             font = init_font
-        text = font.render(text, True, (255,255,255))
+        text = font.render(text, True, color)
         text_rect = text.get_rect()
         text_rect.center = (position[0], position[1])
         self.display.blit(text, text_rect)
+
+    
+
+
