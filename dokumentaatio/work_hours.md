@@ -17,4 +17,5 @@
 | 12.12.|   3  | architecture documentation update and repository tests |
 | 13.12.|   2  | documentation update and minor fixes |
 | 17.12.|   2  | main menu and option to change difficulty |
-| total |  43  | 
+| 23.12.|   2  | refactor main menu, rendering and event queue classes |
+| total |  45  | 
