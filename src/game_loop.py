@@ -120,27 +120,35 @@ class GameLoop:
     def _main_menu(self):
         selected = 0
         options = {0: "start", 1: "change_level", 2: "quit"}
+        level = self.level
         while True:
             self.renderer.main_menu_screen(options[selected], self.level)
             events = self.event_queue.get_events()
-            for event in events:
-                if event == "QUIT":
+            selected, level, start = self._check_main_menu_events(events, selected, level, options)
+            self.level = level
+            if start:
+                return
+
+    def _check_main_menu_events(self, events, selected, level, options):
+        for event in events:
+            if event == "QUIT":
+                sys.exit()
+            if event == "DOWN_DOWN":
+                selected = min(2, selected + 1)
+            elif event == "UP_DOWN":
+                selected = max(0, selected - 1)
+            if event == "RETURN_DOWN" or event == "SPACE_DOWN":
+                if options[selected] == "start":
+                    return selected, level, True
+                if options[selected] == "quit":
                     sys.exit()
-                if event == "DOWN_DOWN":
-                    selected = min(2, selected + 1)
-                elif event == "UP_DOWN":
-                    selected = max(0, selected - 1)
-                if event == "RETURN_DOWN" or event == "SPACE_DOWN":
-                    if options[selected] == "start":
-                        return
-                    if options[selected] == "quit":
-                        sys.exit()
-                if event == "LEFT_DOWN":
-                    if options[selected] == "change_level":
-                        self.level = max(1, self.level - 1)
-                if event == "RIGHT_DOWN":
-                    if options[selected] == "change_level":
-                        self.level = min(10, self.level + 1)
+            if event == "LEFT_DOWN":
+                if options[selected] == "change_level":
+                    level = max(1, level - 1)
+            if event == "RIGHT_DOWN":
+                if options[selected] == "change_level":
+                    level = min(10, level + 1)
+        return selected, level, False
 
     def _update_high_scores(self):
         high_scores = self.repository.get_top10()

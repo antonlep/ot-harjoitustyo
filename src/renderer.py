@@ -95,7 +95,7 @@ class Renderer:
         position = (600, 20)
         self._print_text(text, position)
 
-    def _display_menu_options(self, start, level, quit, level_number)
+    def _display_menu_options(self, start, level, quit, level_number):
         self._display_option(start, "START", 200)
         self._display_option(level, "LEVEL " + str(level_number), 250)
         self._display_option(quit, "QUIT", 300)
