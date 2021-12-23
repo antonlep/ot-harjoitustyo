@@ -25,9 +25,7 @@ class Renderer:
             level: Current level number.
         """
         self.display.fill((0, 0, 0))
-        self._display_lives(lives)
-        self._display_points(points)
-        self._display_level(level)
+        self._display_info(lives, points, level)
         self._display_top_score(top_score)
         self._display_instructions()
         for entity in game_level.all_entities:
@@ -52,9 +50,7 @@ class Renderer:
             level: Current level number.
         """
         self.display.fill((0, 0, 0))
-        self._display_lives(lives)
-        self._display_points(points)
-        self._display_level(level)
+        self._display_info(lives, points, level)
         self._display_instructions()
         font = pygame.font.Font('freesansbold.ttf', 40)
         self._print_text("Game Over", (400, 150), font)
@@ -70,24 +66,16 @@ class Renderer:
                 self._print_text(row["name"] + " " + str(row["score"]), (400, y_pos))
                 y_pos += 20
 
-    def _display_lives(self, lives):
-        text = "Lives " + str(lives)
-        position = (50,20)
-        self._print_text(text, position)
+    def _display_info(self, lives, points, level):
+        info = [("Lives " + str(lives), (50, 20)),
+                ("Points " + str(points), (200, 20)),
+                ("Level " + str(level), (120, 20))]
+        for text in info:
+            self._print_text(text[0], text[1])
 
     def _display_top_score(self, score):
         text = "Top score " + str(score)
         position = (305,20)
-        self._print_text(text, position)
-
-    def _display_points(self, points):
-        text = "Points " + str(points)
-        position = (200, 20)
-        self._print_text(text, position)
-
-    def _display_level(self, level):
-        text = "Level " + str(level)
-        position = (120, 20)
         self._print_text(text, position)
 
     def _display_instructions(self):
