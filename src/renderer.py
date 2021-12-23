@@ -35,19 +35,19 @@ class Renderer:
         pygame.display.flip()
 
     def main_menu_screen(self, option, level):
-        self.display.fill((0, 0, 0))
+        text_start = self.font_large.render("START", self.font_large, (100, 100, 100))
+        text_name = self.font_large.render("LEVEL " + str(level), self.font_large, (100, 100, 100))
+        text_quit = self.font_large.render("QUIT", self.font_large, (100, 100, 100))
         if option == "start":
             text_start = self.font_large.render("START", self.font_large, (255, 255, 255))
-        else:
-            text_start = self.font_large.render("START", self.font_large, (100, 100, 100))
-        if option == "change_level":
+        elif option == "change_level":
             text_name = self.font_large.render("LEVEL " + str(level), self.font_large, (255, 255, 255))
-        else:
-            text_name = self.font_large.render("LEVEL " + str(level), self.font_large, (100, 100, 100))
-        if option == "quit":
+        elif option == "quit":
             text_quit = self.font_large.render("QUIT", self.font_large, (255, 255, 255))
-        else:
-            text_quit = self.font_large.render("QUIT", self.font_large, (100, 100, 100))
+        self._render_main_menu(text_start, text_name, text_quit)
+
+    def _render_main_menu(self, text_start, text_name, text_quit):
+        self.display.fill((0, 0, 0))
         start_rect=text_start.get_rect()
         name_rect = text_name.get_rect()
         quit_rect=text_quit.get_rect()
