@@ -37,17 +37,17 @@ class Renderer:
     def main_menu_screen(self, option, level):
         self.display.fill((0, 0, 0))
         if option == "start":
-            self._display_start_option(True)
-            self._display_level_option(False, level)
-            self._display_quit_option(False)
+            self._display_option(True, "START", 200)
+            self._display_option(False, "LEVEL " + str(level), 250)
+            self._display_option(False, "QUIT", 300)
         elif option == "change_level":
-            self._display_start_option(False)
-            self._display_level_option(True, level)
-            self._display_quit_option(False)
+            self._display_option(False, "START", 200)
+            self._display_option(True, "LEVEL " + str(level), 250)
+            self._display_option(False, "QUIT", 300)
         elif option == "quit":
-            self._display_start_option(False)
-            self._display_level_option(False, level)
-            self._display_quit_option(True)
+            self._display_option(False, "START", 200)
+            self._display_option(False, "LEVEL " + str(level), 250)
+            self._display_option(True, "QUIT", 300)
         pygame.display.flip()
 
     def game_over_screen(self, lives, points, level, high_scores):
@@ -101,26 +101,13 @@ class Renderer:
         position = (600, 20)
         self._print_text(text, position)
 
-    def _display_start_option(self, active):
-        if active:
-            color = (255,255,255)
-        else:
-            color = (100, 100, 100)
-        self._print_text("START", (self.width/2, 200), self.font_large, color)
 
-    def _display_level_option(self, active, level):
+    def _display_option(self, active, text, y_position):
         if active:
             color = (255,255,255)
         else:
             color = (100, 100, 100)
-        self._print_text("LEVEL " + str(level), (self.width/2, 250), self.font_large, color)
-
-    def _display_quit_option(self, active):
-        if active:
-            color = (255,255,255)
-        else:
-            color = (100, 100, 100)
-        self._print_text("QUIT", (self.width/2, 300), self.font_large, color)
+        self._print_text(text, (self.width/2, y_position), self.font_large, color)
 
     def _print_text(self, text, position, init_font=None, color=(255,255,255)):
         if not init_font:
