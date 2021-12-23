@@ -37,17 +37,11 @@ class Renderer:
     def main_menu_screen(self, option, level):
         self.display.fill((0, 0, 0))
         if option == "start":
-            self._display_option(True, "START", 200)
-            self._display_option(False, "LEVEL " + str(level), 250)
-            self._display_option(False, "QUIT", 300)
+            self._display_menu_options(True, False, False, level)
         elif option == "change_level":
-            self._display_option(False, "START", 200)
-            self._display_option(True, "LEVEL " + str(level), 250)
-            self._display_option(False, "QUIT", 300)
+            self._display_menu_options(False, True, False, level)
         elif option == "quit":
-            self._display_option(False, "START", 200)
-            self._display_option(False, "LEVEL " + str(level), 250)
-            self._display_option(True, "QUIT", 300)
+            self._display_menu_options(False, False, True, level)
         pygame.display.flip()
 
     def game_over_screen(self, lives, points, level, high_scores):
@@ -101,6 +95,10 @@ class Renderer:
         position = (600, 20)
         self._print_text(text, position)
 
+    def _display_menu_options(self, start, level, quit, level_number)
+        self._display_option(start, "START", 200)
+        self._display_option(level, "LEVEL " + str(level_number), 250)
+        self._display_option(quit, "QUIT", 300)
 
     def _display_option(self, active, text, y_position):
         if active:
