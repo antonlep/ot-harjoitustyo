@@ -1,0 +1,106 @@
+commit ee36a0362e97fa804830087ee7188f2d2c38699f
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 21:53:30 2021 +0300
+
+    muokkaa
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit f02171cc2af0e76034f15da23f48e2046013b49a
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 21:50:20 2021 +0300
+
+    lisää kansio
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a566a7e4374f684ef3891c6a5d88c82926417e4a
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 21:47:23 2021 +0300
+
+    muokkaa
+
+ eka.txt    | 25 ++++---------------------
+ kolmas.txt |  2 +-
+ 2 files changed, 5 insertions(+), 22 deletions(-)
+
+commit 9784d0bd760de6c02c2e330e694596ca0b7ec988
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 21:45:08 2021 +0300
+
+    nimeä uudelleen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d1fb576210d9b18244a445e4e9ea296b845fdfb9
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 21:43:57 2021 +0300
+
+    poista toinen
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit f8ea61268ecbc2616ec067395cd0e4a85a201a39
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 20:18:11 2021 +0300
+
+    muokkaa tekstiä
+
+ tiedosto.txt | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit 95786d961c554b65f01d2531ba60e818120a5a36
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 20:16:56 2021 +0300
+
+    lisää tekstiä
+
+ tiedosto.txt | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 58 insertions(+), 1 deletion(-)
+
+commit 62016fa8b724c8500a58f169d6bad1a6a7f9b8ac
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 20:07:24 2021 +0300
+
+    muokkaa tiedostoja
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit e33cfabf9ec594b26bafd0d5820aba78f0ccc6fe
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 20:06:25 2021 +0300
+
+    lisää kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8ad7e870ef8e8b39b08f302935b3220873832e84
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 20:04:49 2021 +0300
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit cfe4854281dd6cc563cd58888d647f594169a3d6
+Author: antonlep <anton@FIL16975W.accdom.for.int>
+Date:   Thu Oct 28 20:01:41 2021 +0300
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ 
+ 
