@@ -34,20 +34,26 @@ class Renderer:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
 
-    def main_menu_screen(self, option):
+    def main_menu_screen(self, option, level):
         self.display.fill((0, 0, 0))
         if option == "start":
             text_start = self.font_large.render("START", self.font_large, (255, 255, 255))
         else:
-            text_start = self.font_large.render("START", self.font_large, (200, 200, 200))
+            text_start = self.font_large.render("START", self.font_large, (100, 100, 100))
+        if option == "change_level":
+            text_name = self.font_large.render("LEVEL " + str(level), self.font_large, (255, 255, 255))
+        else:
+            text_name = self.font_large.render("LEVEL " + str(level), self.font_large, (100, 100, 100))
         if option == "quit":
             text_quit = self.font_large.render("QUIT", self.font_large, (255, 255, 255))
         else:
-            text_quit = self.font_large.render("QUIT", self.font_large, (200, 200, 200))
+            text_quit = self.font_large.render("QUIT", self.font_large, (100, 100, 100))
         start_rect=text_start.get_rect()
+        name_rect = text_name.get_rect()
         quit_rect=text_quit.get_rect()
         self.display.blit(text_start, (self.width/2 - (start_rect[2]/2), 200))
-        self.display.blit(text_quit, (self.width/2 - (quit_rect[2]/2), 250))
+        self.display.blit(text_name, (self.width/2 - (name_rect[2]/2), 250))
+        self.display.blit(text_quit, (self.width/2 - (quit_rect[2]/2), 300))
         pygame.display.flip()
 
     def game_over_screen(self, lives, points, level, high_scores):

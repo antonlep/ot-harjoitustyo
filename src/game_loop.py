@@ -43,7 +43,6 @@ class GameLoop:
 
     def _restart(self):
         self.game_level.reset_all()
-        self.game_level.ball.speed = 5
         self.level = 1
         self.lives = 3
         self.points = 0
@@ -55,7 +54,6 @@ class GameLoop:
 
     def _next_level(self):
         self.game_level.reset_all()
-        self.game_level.ball.speed += 2
         self.level += 1
         self.paused = True
 
@@ -72,6 +70,7 @@ class GameLoop:
         if not self.paused:
             if self.game_level.no_tiles():
                 self._next_level()
+        self.game_level.ball.speed = 3 + self.level*2
 
 
     def _check_events(self, events):
@@ -80,7 +79,7 @@ class GameLoop:
                 self.running = False
             if event == "N":
                 self._restart()
-                self.start()
+                self._main_menu()
             if event == "SPACE" and self.paused:
                 self._start_game()
 
@@ -120,9 +119,9 @@ class GameLoop:
 
     def _main_menu(self):
         selected = 0
-        options = {0: "start", 1: "change_name", 2: "quit"}
+        options = {0: "start", 1: "change_level", 2: "quit"}
         while True:
-            self.renderer.main_menu_screen(options[selected])
+            self.renderer.main_menu_screen(options[selected], self.level)
             events = self.event_queue.get_events()
             for event in events:
                 if event == "QUIT":
@@ -136,6 +135,12 @@ class GameLoop:
                         return
                     if options[selected] == "quit":
                         sys.exit()
+                if event == "LEFT_DOWN":
+                    if options[selected] == "change_level":
+                        self.level = max(1, self.level - 1)
+                if event == "RIGHT_DOWN":
+                    if options[selected] == "change_level":
+                        self.level = min(10, self.level + 1)
 
     def _update_high_scores(self):
         high_scores = self.repository.get_top10()
