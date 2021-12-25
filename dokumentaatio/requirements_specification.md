@@ -3,7 +3,7 @@
 A game, where the goal is to knock down rows of bricks with a ball, using a movable paddle to hit the ball. 
 ## User interface
 ### Three main views:
-- Start screen with buttons for a new game, for a high score list and for a difficulty level
+- Start screen with buttons for a new game, for changing color, for a difficulty level and for exiting the game
 - Gameplay view
   - Moving paddle on the bottom
   - Eight rows of bricks on the top
@@ -11,7 +11,7 @@ A game, where the goal is to knock down rows of bricks with a ball, using a mova
   - Highest previous score display
   - Difficulty level display
   - Number of balls left
-- High score list with names and scores
+- High score list with points
 ## Basic functionalities
 - [x] During gameplay, user can move the paddle left and right
 - [x] User can hit the ball with paddle
