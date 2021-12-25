@@ -15,6 +15,8 @@ Breakout game created with Python 3 with pygame library. Current version has bal
 
 [User manual](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/manual.md)
 
+[Test document](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/testing.md)
+
 ## Required software
 
 - Python (>= 3.8)
