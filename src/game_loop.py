@@ -1,4 +1,5 @@
 import sys
+from main_menu import MainMenu
 
 
 class GameLoop:
@@ -97,7 +98,6 @@ class GameLoop:
         return 0
 
     def _insert_score(self):
-        #possibility to insert name to be added
         self.repository.add("", self.points)
 
     def _game_over(self):
@@ -115,68 +115,28 @@ class GameLoop:
                     self.start()
                     break
 
-    def _main_menu(self):
-        selected = 0
-        options = {0: "start", 1: "change_level", 2: "change_color",  3: "quit"}
-        colors = {1: "white", 2: "red", 3: "green", 4: "blue", 5: "yellow", 6: "cyan"}
-        level = self.level
-        selected_color = 1
-        while True:
-            self.renderer.main_menu_screen(options[selected], self.level, colors[selected_color])
-            events = self.event_queue.get_events()
-            selected, level, selected_color, start = self._check_main_menu_events(events, selected, level, options, selected_color)
-            if start:
-                self.level = level
-                self.game_level.change_color(colors[selected_color])
-                return
-
-    def _check_main_menu_events(self, events, selected, level, options, selected_color):
-        start = False
-        option = options[selected]
-        actions = {"DOWN_DOWN": self._menu_move_down,
-                   "UP_DOWN": self._menu_move_up,
-                   "RETURN_DOWN": self._menu_select,
-                   "LEFT_DOWN": self._menu_move_left,
-                   "RIGHT_DOWN": self._menu_move_right}
-        for event in events:
-            if event == "QUIT":
-                sys.exit()
-            if event in actions:
-                selected, level, selected_color, start = actions[event](selected, level, selected_color, option)
-                if start:
-                    break
-        return selected, level, selected_color, start
-
-    def _menu_move_down(self, selected, level, selected_color, option):
-        return min(3, selected + 1), level, selected_color, False
-
-    def _menu_move_up(self, selected, level, selected_color, option):
-        return max(0, selected - 1), level, selected_color, False
-
-    def _menu_move_left(self, selected, level, selected_color, option):
-        if option == "change_level":
-            level = max(1, level - 1)
-        if option == "change_color":
-            selected_color = max(1, selected_color - 1)
-        return selected, level, selected_color, False
-
-    def _menu_move_right(self, selected, level, selected_color, option):
-        if option == "change_level":
-            level = min(10, level + 1)
-        if option == "change_color":
-            selected_color = min(6, selected_color + 1)
-        return selected, level, selected_color, False
-
-    def _menu_select(self, selected, level, selected_color, option):
-        chosen = False
-        if option == "start":
-            chosen = True
-        elif option == "quit":
-            sys.exit()
-        return selected, level, selected_color, chosen
-
     def _update_high_scores(self):
         high_scores = self.repository.get_top10()
         if not high_scores or len(high_scores) < 10 or self.points > high_scores[-1]["score"]:
             self._insert_score()
         return self.repository.get_top10()
+
+    def _main_menu(self):
+        main_menu = MainMenu(self.event_queue, self.renderer, self.game_level)
+        selected = 0
+        sel_color = 1
+        option = main_menu.options[selected]
+        color = main_menu.colors[sel_color]
+        level = self.level
+        while True:
+            self.renderer.main_menu_screen(
+                option, level, color
+                )
+            events = self.event_queue.get_events()
+            selected, level, sel_color, start, color, option = main_menu.check_main_menu_events(
+                events, selected, level, sel_color
+                )
+            if start:
+                self.game_level.update_color(color)
+                self.level = level
+                return

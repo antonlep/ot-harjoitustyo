@@ -14,6 +14,7 @@ class GameLevel:
         self.paddle = paddle
         self.ball = ball
         self.game_area_size = (game_area.height, game_area.width)
+        self.color = "white"
         self.reset_all()
 
     def _ball_update(self):
@@ -95,6 +96,7 @@ class GameLevel:
         for i in range(105, self.game_area.width, 100):
             for j in range(40, 80, 20):
                 tile = Tile(i, j)
+                tile.surf.fill(self.color)
                 self.tiles_group.add(tile)
 
     def ball_on_paddle(self):
@@ -115,7 +117,8 @@ class GameLevel:
         """
         return not self.tiles_group
 
-    def change_color(self, color):
+    def update_color(self, color):
+        self.color = color
         colors = {"white": (255, 255, 255),
                 "red": (255, 0, 0),
                 "green": (0, 255, 0),
@@ -123,4 +126,4 @@ class GameLevel:
                 "yellow": (255, 255, 0),
                 "cyan": (0, 255, 255)}
         for entity in self.all_entities:
-            entity.surf.fill(colors[color])
+            entity.surf.fill(colors[self.color])
