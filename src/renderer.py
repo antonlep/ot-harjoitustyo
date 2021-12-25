@@ -1,5 +1,4 @@
 import pygame
-import pygame_menu
 
 class Renderer:
     """Class that renders game objects to the screen.
@@ -32,14 +31,16 @@ class Renderer:
             self.display.blit(entity.surf, entity.rect)
         pygame.display.flip()
 
-    def main_menu_screen(self, option, level):
+    def main_menu_screen(self, option, level, color):
         self.display.fill((0, 0, 0))
         if option == "start":
-            self._display_menu_options(True, False, False, level)
+            self._display_menu_options(True, False, False, False, level, color)
         elif option == "change_level":
-            self._display_menu_options(False, True, False, level)
+            self._display_menu_options(False, True, False, False, level, color)
+        elif option == "change_color":
+            self._display_menu_options(False, False, True, False, level, color)
         elif option == "quit":
-            self._display_menu_options(False, False, True, level)
+            self._display_menu_options(False, False, False, True, level, color)
         pygame.display.flip()
 
     def game_over_screen(self, lives, points, level, high_scores):
@@ -83,10 +84,11 @@ class Renderer:
         position = (600, 20)
         self._print_text(text, position)
 
-    def _display_menu_options(self, start, level, quit, level_number):
+    def _display_menu_options(self, start, level, color, quit, level_number, color_number):
         self._display_option(start, "START", 200)
         self._display_option(level, "LEVEL " + str(level_number), 250)
-        self._display_option(quit, "QUIT", 300)
+        self._display_option(color, "COLOR " + str(color_number), 300)
+        self._display_option(quit, "QUIT", 350)
 
     def _display_option(self, active, text, y_position):
         if active:
@@ -104,7 +106,3 @@ class Renderer:
         text_rect = text.get_rect()
         text_rect.center = (position[0], position[1])
         self.display.blit(text, text_rect)
-
-    
-
-

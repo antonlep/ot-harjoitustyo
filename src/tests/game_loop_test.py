@@ -24,7 +24,7 @@ class StubRenderer:
     def game_over_screen(self):
         pass
 
-    def main_menu_screen(self, option, level):
+    def main_menu_screen(self, option, level, color):
         pass
 
 class StubClock:

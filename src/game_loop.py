@@ -40,7 +40,6 @@ class GameLoop:
             self.renderer.render(self.game_level, self.lives, self.points, self.level, top_score)
             self.clock.tick(60)
 
-
     def _restart(self):
         self.game_level.reset_all()
         self.level = 1
@@ -71,7 +70,6 @@ class GameLoop:
             if self.game_level.no_tiles():
                 self._next_level()
         self.game_level.ball.speed = 3 + self.level*2
-
 
     def _check_events(self, events):
         for event in events:
@@ -119,17 +117,20 @@ class GameLoop:
 
     def _main_menu(self):
         selected = 0
-        options = {0: "start", 1: "change_level", 2: "quit"}
+        options = {0: "start", 1: "change_level", 2: "change_color",  3: "quit"}
+        colors = {1: "white", 2: "red", 3: "green", 4: "blue", 5: "yellow", 6: "cyan"}
         level = self.level
+        selected_color = 1
         while True:
-            self.renderer.main_menu_screen(options[selected], self.level)
+            self.renderer.main_menu_screen(options[selected], self.level, colors[selected_color])
             events = self.event_queue.get_events()
-            selected, level, start = self._check_main_menu_events(events, selected, level, options)
-            self.level = level
+            selected, level, selected_color, start = self._check_main_menu_events(events, selected, level, options, selected_color)
             if start:
+                self.level = level
+                self.game_level.change_color(colors[selected_color])
                 return
 
-    def _check_main_menu_events(self, events, selected, level, options):
+    def _check_main_menu_events(self, events, selected, level, options, selected_color):
         start = False
         option = options[selected]
         actions = {"DOWN_DOWN": self._menu_move_down,
@@ -141,33 +142,38 @@ class GameLoop:
             if event == "QUIT":
                 sys.exit()
             if event in actions:
-                selected, level, start = actions[event](selected, level, option)
+                selected, level, selected_color, start = actions[event](selected, level, selected_color, option)
                 if start:
-                    return selected, level, start
-        return selected, level, start
+                    break
+        return selected, level, selected_color, start
 
-    def _menu_move_down(self, selected, level, option):
-        return min(2, selected + 1), level, False
+    def _menu_move_down(self, selected, level, selected_color, option):
+        return min(3, selected + 1), level, selected_color, False
 
-    def _menu_move_up(self, selected, level, option):
-        return max(0, selected - 1), level, False
+    def _menu_move_up(self, selected, level, selected_color, option):
+        return max(0, selected - 1), level, selected_color, False
 
-    def _menu_move_left(self, selected, level, option):
+    def _menu_move_left(self, selected, level, selected_color, option):
         if option == "change_level":
             level = max(1, level - 1)
-        return selected, level, False
+        if option == "change_color":
+            selected_color = max(1, selected_color - 1)
+        return selected, level, selected_color, False
 
-    def _menu_move_right(self, selected, level, option):
+    def _menu_move_right(self, selected, level, selected_color, option):
         if option == "change_level":
             level = min(10, level + 1)
-        return selected, level, False
+        if option == "change_color":
+            selected_color = min(6, selected_color + 1)
+        return selected, level, selected_color, False
 
-    def _menu_select(self, selected, level, option):
+    def _menu_select(self, selected, level, selected_color, option):
+        chosen = False
         if option == "start":
-            return selected, level, True
+            chosen = True
         elif option == "quit":
             sys.exit()
-        return selected, level, False
+        return selected, level, selected_color, chosen
 
     def _update_high_scores(self):
         high_scores = self.repository.get_top10()
