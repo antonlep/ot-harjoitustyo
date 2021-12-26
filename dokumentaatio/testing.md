@@ -18,7 +18,7 @@ Repository is tested with TestRepository class. Test database is stored in memor
 
 ## System testing
 
-System testing has been done manually. Proram has been installed and functionalities listed in requirement document have been tested one by one in Linux and in Windows 10 machine. Different database configurations have been tested by modifying .env file. Cases where database doesn't exist or already exists have been gone through.
+System testing has been done manually. Proram has been installed and functionalities listed in requirement document have been tested in Linux and in Windows 10 machines. Different database configurations have been tested by modifying .env file. Cases where database doesn't exist or already exists have been gone through.
 
 ## Remaining quality issues
 
