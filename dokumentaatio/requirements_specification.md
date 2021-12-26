@@ -6,7 +6,7 @@ A game, where the goal is to knock down rows of bricks with a ball, using a mova
 - Start screen with buttons for a new game, for changing color, for a difficulty level and for exiting the game
 - Gameplay view
   - Moving paddle on the bottom
-  - Eight rows of bricks on the top
+  - Rows of bricks on the top
   - Current score display
   - Highest previous score display
   - Difficulty level display
