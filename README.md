@@ -1,6 +1,6 @@
 # Breakout
 
-Breakout game created with Python 3 with pygame library. Current version has ball, paddle and breakable tiles, rising difficulty level and top score list. In next version possibility to add name to high score list will be added.
+Breakout game created with Python 3 with pygame library. Current version has ball, paddle and breakable tiles, rising difficulty level and top score list. It is possible to change the game difficulty and colors.
 
 ## Latest release
 
