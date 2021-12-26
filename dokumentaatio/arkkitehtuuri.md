@@ -1,7 +1,7 @@
 # Architecture descripttion
 
 ## Main structure
-Program has hierarchical structure with three main levels: On top, GameLoop keeps track of the current game state and takes care of the interactions of classes below. On the second level, GameLevel handles game objects and their interactions, Renderer displays objects to the screen, EventQueue handles user generated input and Repository is resposible for data storage. On the third level are simple game objects that GameLevel and Renderer use. 
+Program has hierarchical structure with three main levels: On top, GameLoop keeps track of the current game state and takes care of the interactions of classes below. On the second level, GameLevel handles game objects and their interactions, Renderer displays objects to the screen, EventQueue handles user generated input, MainMenu includes menu logic and Repository is resposible for data storage. On the third level are simple game objects that GameLevel and Renderer use. 
 ![kaavio](https://user-images.githubusercontent.com/76871257/147405460-2724187c-d9eb-4327-89d8-2f6f5d2d0651.PNG)
 
 ## UI
