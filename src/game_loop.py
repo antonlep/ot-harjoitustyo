@@ -122,7 +122,7 @@ class GameLoop:
         return self.repository.get_top10()
 
     def _main_menu(self):
-        main_menu = MainMenu(self.event_queue, self.renderer, self.game_level)
+        main_menu = MainMenu()
         selected = 0
         sel_color = 1
         option = main_menu.options[selected]

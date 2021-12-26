@@ -1,10 +1,7 @@
 import sys
 
 class MainMenu:
-    def __init__(self, event_queue, renderer, game_level):
-        self.event_queue = event_queue
-        self.renderer = renderer
-        self.game_level = game_level
+    def __init__(self):
         self.options = {0: "start", 1: "change_level", 2: "change_color",  3: "quit"}
         self.colors = {1: "white", 2: "red", 3: "green", 4: "blue", 5: "yellow", 6: "cyan"}
         self.actions = {"DOWN_DOWN": self._menu_move_down,
@@ -16,7 +13,6 @@ class MainMenu:
     def check_main_menu_events(self, events, selected, level, selected_color):
         start = False
         option = self.options[selected]
-
         for event in events:
             if event == "QUIT":
                 sys.exit()
