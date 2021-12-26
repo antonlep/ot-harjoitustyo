@@ -16,11 +16,9 @@ Start the game:
 
 `poetry run invoke start`
 
-In Windows 10 and depending on python configuration it might be needed to run the command 
+In Windows 10 and depending on python configuration it might be needed to run the following command to start the game
 
 `poetry run python src/index.py`
-
-to start the game
 
 ## Keys
 
