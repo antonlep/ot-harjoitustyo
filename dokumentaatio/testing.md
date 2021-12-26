@@ -1,6 +1,13 @@
 # Test document
 
-Program has been tested with 
+Program has been tested by making unit tests for smaller components and integration tests for larger functionalities, especially for GameLoop class. Tests have been made automatically with unittest. In addition manual tests have been done to validate large scale system functionality.
 
-## Configuration
+## Unit testing and integration testing
 
+## System testing
+
+System testing has been done manually. Proram has been installed and functionalities listed in requirement document have been tested one by one in Linux and in Windows 10 machine. Different database configurations have been tested by modifying .env file. Cases where database doesn't exist or already exists have been gone through.
+
+## Remaining quality issues
+
+In some cases game over screen is displayed when user exits the software by pressing (x) during game play, so the game is not immediately closed.
