@@ -28,4 +28,4 @@ System testing has been done manually. Proram has been installed and functionali
 
 ## Remaining quality issues
 
-In some cases game over screen is displayed when user exits the software by pressing (x) during game play, so the game is not immediately closed.
+In some cases game is not immediately closed when user exits the software by pressing (x) during game play, but game over screen is displayed instead.
