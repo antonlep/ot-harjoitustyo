@@ -18,6 +18,14 @@ Start the game:
 
 ## Keys
 
+In main menu screen:
+
+Left, right, up and down keys to navigate the options
+
+Enter or space to select start a new game option
+
+During playing:
+
 N to start a new game
 
 Space to launch the ball
