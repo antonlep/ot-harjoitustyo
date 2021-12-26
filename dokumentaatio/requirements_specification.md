@@ -25,10 +25,10 @@ A game, where the goal is to knock down rows of bricks with a ball, using a mova
 - [ ] User can insert name to high score list
 - [ ] User can display high score list
 - [x] User can change the game difficulty level which controls the ball speed
+- [x] Option to change colors 
 
 ## Further development ideas
 - Multiple levels with different brick layouts
 - Some bricks would require multiple hits to break
 - Possibility to pause the game
-- Option to change game appearance, for example colors
 - Special bonuses: multiple balls, widening or shortening the paddle, temporarily speeding up the ball, reversing the controls
