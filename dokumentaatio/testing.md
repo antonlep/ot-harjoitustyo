@@ -1,6 +1,6 @@
 # Test document
 
-Program has been tested by making unit tests for smaller components and integration tests for larger functionalities, especially for GameLoop class. Tests have been made automatically with unittest. In addition manual tests have been done to validate large scale system functionality.
+Program has been tested by making unit tests for smaller components and integration tests for larger functionalities, especially for GameLoop class. Tests have been made automatically with unittest. In addition manual tests have been used to validate large scale system functionality.
 
 ## Unit testing and integration testing
 
