@@ -19,6 +19,7 @@ Repository is tested with TestRepository class. Test database is stored in memor
 ### Test coverage
 
 Test branch coverage is 84% when not including UI class Renderer.
+
 ![coverage](https://user-images.githubusercontent.com/76871257/147408495-a5e39ebe-3c37-48dd-8859-1bbe90dce5c6.PNG)
 
 ## System testing
