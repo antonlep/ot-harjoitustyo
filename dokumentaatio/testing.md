@@ -16,6 +16,11 @@ Game objects and their interactions are tested with PaddleTest and TestGameLevel
 
 Repository is tested with TestRepository class. Test database is stored in memory by using sqlite :memory option, so no additional test databases are created to the disk. Repository methods are tested with unit tests.
 
+### Test coverage
+
+Test branch coverage is 84% when not including UI class Renderer.
+![coverage](https://user-images.githubusercontent.com/76871257/147408495-a5e39ebe-3c37-48dd-8859-1bbe90dce5c6.PNG)
+
 ## System testing
 
 System testing has been done manually. Proram has been installed and functionalities listed in requirement document have been tested in Linux and in Windows 10 machines. Different database configurations have been tested by modifying .env file. Cases where database doesn't exist or already exists have been gone through.
