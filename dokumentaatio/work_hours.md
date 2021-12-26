@@ -19,4 +19,5 @@
 | 17.12.|   2  | main menu and option to change difficulty |
 | 23.12.|   2  | refactor main menu, rendering and event queue classes |
 | 25.12.|   2  | move main menu to own class |
-| total |  47  | 
+| 26.12.|   1  | update documentation |
+| total |  48  | 
