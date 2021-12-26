@@ -4,6 +4,18 @@ Program has been tested by making unit tests for smaller components and integrat
 
 ## Unit testing and integration testing
 
+### UI
+
+UI is somewhat tested by testing EventQueue class with EventQueueTest class in simple cases. Renderer class is not tested with unit tests.
+
+### Game logic
+
+Game objects and their interactions are tested with PaddleTest and TestGameLevel classes. Cases that the ball moves correctly, don't go through walls and hits the paddle and walls in correct way are gone through. Game logic is tested with TestGameLoop class where Renderer, Repository and EventQueue are mock components, but the real classes are used for game logic components GameLevel, Ball, Paddle and Tiles. Different game states are tested there to assess integrated behavior.
+
+### Repository
+
+Repository is tested with TestRepository class. Test database is stored in memory by using sqlite :memory option, so no additional test databases are created to the disk. Repository methods are tested with unit tests.
+
 ## System testing
 
 System testing has been done manually. Proram has been installed and functionalities listed in requirement document have been tested one by one in Linux and in Windows 10 machine. Different database configurations have been tested by modifying .env file. Cases where database doesn't exist or already exists have been gone through.
