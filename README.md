@@ -4,7 +4,7 @@ Breakout game created with Python 3 with pygame library. Current version has bal
 
 ## Latest release
 
-[Latest release](https://github.com/antonlep/ot-harjoitustyo/releases/tag/viikko6)
+[Latest release](https://github.com/antonlep/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ## Documentation
 [Requirements specification](https://github.com/antonlep/ot-harjoitustyo/blob/master/dokumentaatio/requirements_specification.md)
