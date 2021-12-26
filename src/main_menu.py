@@ -1,6 +1,8 @@
 import sys
 
 class MainMenu:
+    """Class that defines main menu and how to change and select options inside.
+    """
     def __init__(self):
         self.options = {0: "start", 1: "change_level", 2: "change_color",  3: "quit"}
         self.colors = {1: "white", 2: "red", 3: "green", 4: "blue", 5: "yellow", 6: "cyan"}
@@ -11,6 +13,22 @@ class MainMenu:
                    "RIGHT_DOWN": self._menu_move_right}
 
     def check_main_menu_events(self, events, selected, level, selected_color):
+        """Defines how menu options change with different keypress events as input.
+
+        Args:
+            events: List of keypress events as list of strings
+            selected: Integer that defines currently selected menu option
+            level: Current level number
+            selected_color Integer that defines currently selected color
+
+        Returns:
+            selected: Currently selected menu option as number
+            level: Currently selected level number
+            selected_color: Currently selected color as number
+            start: Boolean, True if start button has been pressed, False otherwise
+            color: Selected color as string
+            option: Selected menu option as string
+        """
         start = False
         option = self.options[selected]
         for event in events:

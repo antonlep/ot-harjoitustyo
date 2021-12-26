@@ -118,6 +118,12 @@ class GameLevel:
         return not self.tiles_group
 
     def update_color(self, color):
+        """Changes game object colors.
+
+        Args:
+            color: Color name as string.
+            Allowed colors: white, red, gree, blue, yellow, cyan.
+        """
         self.color = color
         colors = {"white": (255, 255, 255),
                 "red": (255, 0, 0),
