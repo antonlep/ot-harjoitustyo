@@ -30,3 +30,8 @@ First, GameLoop gets information of keypress from EventQueue. Then it calls Game
 First, GameLoop checks what keys have been pressed. When N key is pressed, GameLevel resets ball and paddle position, removes old tiles and creates new tiles. Then main menu screen is displayed. When enter is pressed, game loop continues, entity colors are updated, ball is set up to lie on top of the paddle and objects are rendered to the display. Finally clock is advanced.
 ![class3](https://user-images.githubusercontent.com/76871257/147406350-ac7befc8-caa9-4107-8509-d688a6e77db1.PNG)
 
+## Improvement areas
+
+GameLoop class includes at the moment both the game state tracking (number of lives, points, different checks) and game loop itself. Game state related functionality could be moved to separate GameState class, so that the GameLoop would include only simple looping without any game logic. 
+
+
