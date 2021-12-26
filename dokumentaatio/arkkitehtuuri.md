@@ -2,7 +2,7 @@
 
 ## Main structure
 Program has hierarchical structure with three main levels: On top, GameLoop keeps track of the current game state and takes care of the interactions of classes below. On the second level, GameLevel handles game objects and their interactions, Renderer displays objects to the screen, EventQueue handles user generated input and Repository is resposible for data storage. On the third level are simple game objects that GameLevel and Renderer use. 
-![kaavio](https://user-images.githubusercontent.com/76871257/147405444-6cb85cbf-7a2e-43d2-b933-e4f326087368.PNG)
+![kaavio](https://user-images.githubusercontent.com/76871257/147405460-2724187c-d9eb-4327-89d8-2f6f5d2d0651.PNG)
 
 ## UI
 User interface is implemented using pygame library for object display and user input. EventQueue reads user input from keypresses, and Renderer displays objects to the screen using pygame Display object.  
