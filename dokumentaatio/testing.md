@@ -10,7 +10,7 @@ UI is somewhat tested by testing EventQueue class with EventQueueTest class in s
 
 ### Game logic
 
-Game objects and their interactions are tested with PaddleTest and TestGameLevel classes. Cases that the ball moves correctly, don't go through walls and hits the paddle and walls in correct way are gone through. Game logic is tested with TestGameLoop class where Renderer, Repository and EventQueue are mock components, but the real classes are used for game logic components GameLevel, Ball, Paddle and Tiles. Different game states are tested there to assess integrated behavior.
+Game objects and their interactions are tested with PaddleTest and TestGameLevel classes. Cases that the ball moves correctly, don't go through walls and hits the paddle and walls in correct way are gone through. Game logic is tested with TestGameLoop class where Renderer, Repository and EventQueue are mock components, but the real classes are used for game logic components GameLevel, Ball, Paddle and Tiles. Different game states are tested there to assess correct integrated behavior.
 
 ### Repository
 
